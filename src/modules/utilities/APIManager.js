@@ -42,5 +42,11 @@ export default Object.create(null, {
                 body: JSON.stringify(obj)
             }).then(data => data.json());
         }
+    },
+    GETSEARCHRESULTS: {
+        value: function(arrayWithKey, searchInput) {
+            return fetch(`${Settings.url}/${arrayWithKey}_like=${searchInput}`)
+            .then(r => r.json())
+        }
     }
 })

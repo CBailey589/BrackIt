@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 import { Link, withRouter } from "react-router-dom"
+import APIManager from "../../modules/utilities/APIManager"
+import "./NavBar.css"
 
 class NavBar extends Component {
     constructor(props) {
@@ -18,15 +20,9 @@ class NavBar extends Component {
     keyPress(event) {
         const SearchResults = {}
         if (event.keyCode === 13) {
-            fetch(`http://localhost:5002/storeArray?name_like=${this.state.SearchInput}`)
-                .then(r => r.json())
-                .then((parsedJson => SearchResults.FilteredStores = parsedJson))
-                .then(() => fetch(`http://localhost:5002/employeeArray?name_like=${this.state.SearchInput}`))
-                .then(r => r.json())
-                .then(parsedJson => SearchResults.FilteredEmployees = parsedJson)
-                .then(() => fetch(`http://localhost:5002/candyArray?name_like=${this.state.SearchInput}`))
-                .then(r => r.json())
-                .then(parsedJson => SearchResults.FilteredCandies = parsedJson)
+            let prom1 = Promise.resolve(APIManager.GETSEARCHRESULTS("lists?listName", this.state.SearchInput)).then(r => r.json())
+                .then((json) => SearchResults.FilteredLists = json)
+            Promise.all([prom1])
                 .then(() => this.setState(SearchResults))
                 .then(() => {
                     this.props.history.push({
@@ -40,19 +36,17 @@ class NavBar extends Component {
 
     render() {
         return (
-            <nav className="navbar navbar-light fixed-top light-blue flex-md-nowrap p-0 shadow">
-                <ul className="nav nav-pills">
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/">Locations</Link>
+            <nav className="NavBar">
+                <ul className="">
+                    <li className="NavItem">
+                        <Link className="nav-link" to="/">My Lists</Link>
                     </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/employees">Employees</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/candies">Candies</Link>
-                    </li>
-                    <li className="nav-item">
-                        <input value={this.state.value} onKeyDown={this.keyPress} onChange={this.handleChange} placeholder="Search..." />
+                    <li className="NavItem">
+                        <input
+                            value={this.state.value}
+                            onKeyDown={this.keyPress}
+                            onChange={this.handleChange}
+                            placeholder="Search..." />
                     </li>
                 </ul>
             </nav >
