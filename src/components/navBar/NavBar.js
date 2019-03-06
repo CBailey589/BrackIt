@@ -20,7 +20,7 @@ class NavBar extends Component {
     keyPress(event) {
         const SearchResults = {}
         if (event.keyCode === 13) {
-            let prom1 = Promise.resolve(APIManager.GETSEARCHRESULTS("lists?listName", this.state.SearchInput)).then(r => r.json())
+            let prom1 = Promise.resolve(APIManager.GetSearchResults("lists?listName", this.state.SearchInput)).then(r => r.json())
                 .then((json) => SearchResults.FilteredLists = json)
             Promise.all([prom1])
                 .then(() => this.setState(SearchResults))

@@ -6,6 +6,8 @@ class BrackIt extends Component {
     render() {
         return (
             <React.Fragment>
+                {/* <Header />
+                <SideBar /> */}
                 <NavBar />
                 <ApplicationViews />
             </React.Fragment>
