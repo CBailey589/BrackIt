@@ -7,12 +7,6 @@ export default Object.create(null, {
                 .then(r => r.json())
         }
     },
-    GetByUser: {
-        value: function () {
-            return fetch(`${Settings.url}/${this.array}?userId=${this.id}`)
-                .then(r => r.json())
-        }
-    },
     GetSearchResults: {
         value: function (arrayWithKey, searchInput) {
             return fetch(`${Settings.url}/${arrayWithKey}_like=${searchInput}`)

@@ -1,24 +1,34 @@
-// import { Route, Redirect } from "react-router-dom"
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from "react-router-dom"
 import React, { Component } from "react"
-import Login from "./authentication/Login"
-import UserLists from "./userLists/UserLists"
+// Module Resource Managers
 import ListManager from "../modules/resourceManagers/ListManager"
+import UserManager from "../modules/resourceManagers/UserManager"
+// Components
+import Login from "./authentication/Login"
+import UserLists from "./lists/UserLists"
+
+
 
 class ApplicationViews extends Component {
 
-    isAuthenticated = () => sessionStorage.getItem("credentials") !== null
+    isAuthenticated = () => sessionStorage.getItem("BrackItCredentials") !== null
 
     state = {
         users: [],
         lists: []
     }
 
-    componentDidMount() {
-        debugger
+    componentWillMount() {
+        // ******** UNCOMMENT LATER FOR TESTING!!!!****************
+        // // // clears out BrackIt credentials
+        // // if (sessionStorage.getItem("BrackItCredentials") !== null) {
+        // //     sessionStorage.removeItem("BrackItCredentials")
+        // // }
+
         const newState = {}
-        let prom1 = Promise.resolve(ListManager.GetByUser().then(json => newState.lists = json))
-        Promise.all([prom1])
+        let prom1 = Promise.resolve(ListManager.GetAll().then(json => newState.lists = json))
+        let prom2 = Promise.resolve(UserManager.GetAll().then(json => newState.users = json))
+        Promise.all([prom1, prom2])
             .then(() => this.setState(newState))
     }
 
@@ -30,9 +40,14 @@ class ApplicationViews extends Component {
                         {...props} />
                 }} />
                 <Route exact path="/" render={() => {
-                    return <UserLists/>
-                }}/>
-
+                    if (this.isAuthenticated()) {
+                        return <UserLists
+                            lists={this.state.lists}
+                        />
+                    } else {
+                        return <Redirect to="/login" />
+                    }
+                }} />
             </React.Fragment>
         )
     }

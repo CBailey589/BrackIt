@@ -6,7 +6,7 @@ export default class Login extends Component {
     state = {
         email: "",
         pass: "",
-        id: 0
+        BrackItId: 0
     }
 
     // Update state whenever an input field is edited
@@ -22,42 +22,51 @@ export default class Login extends Component {
         return UserManager.GetAll()
             // matches email entered into Login with email for user in database, and pulls users id to store in local storage
             .then((userArray) => userArray.filter(user => user.email === this.state.email)[0])
-            .then((user) => this.setState({id : user.id}))
+            .then((user) => this.setState({ id: user.id }))
             .then(() => {
                 // for now just storing emal/pass/userId in local storage
                 sessionStorage.setItem(
-                    "credentials",
+                    "BrackItCredentials",
                     JSON.stringify({
                         email: this.state.email,
                         pass: this.state.pass,
-                        id: this.state.id
+                        BrackItId: this.state.id
                     })
                 )
                 return
             })
-            .then(()=> this.props.history.push("/"))
+            .then(() => this.props.history.push("/"))
     }
 
     render() {
         return (
             <form
                 onSubmit={this.handleLogin}>
-                <h1 className="">Please Sign In</h1>
-                <label htmlFor="inputEmail">
+                <h1 className="">
+                    Please Sign In
+                </h1>
+                <label
+                    htmlFor="inputEmail">
                     Email address
                 </label>
-                <input onChange={this.handleFieldChange} type="email"
+                <input
+                    onChange={this.handleFieldChange}
+                    type="email"
                     id="email"
                     placeholder="Email"
                     required="" autoFocus="" />
-                <label htmlFor="inputPassword">
+                <label
+                    htmlFor="inputPassword">
                     Password
                 </label>
-                <input onChange={this.handleFieldChange} type="password"
+                <input
+                    onChange={this.handleFieldChange}
+                    type="password"
                     id="pass"
                     placeholder="Password"
                     required="" />
-                <button type="submit">
+                <button
+                    type="submit">
                     Sign in
                 </button>
             </form>
