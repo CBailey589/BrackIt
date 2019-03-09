@@ -1,7 +1,7 @@
 import Settings from "./Settings"
 
 export default Object.create(null, {
-    GET: {
+    GETONE: {
         value: function (id) {
             return fetch(`${Settings.url}/${this.DBarray}/${id}`)
                 .then(r => r.json())
@@ -44,15 +44,20 @@ export default Object.create(null, {
         }
     },
     MATCHLIKE: {
-        value: function (DBKey, searchVal) {
-            return fetch(`${Settings.url}/${this.DBarray}?${DBKey}_like=${searchVal}`)
+        value: function (arrayKey, searchVal) {
+            return fetch(`${Settings.url}/${this.DBarray}?${arrayKey}_like=${searchVal}`)
                 .then(r => r.json())
         }
     },
     CUSTOMSEARCH: {
         value: function (searchString) {
-            return fetch(`${Settings.url}/${searchString}`)
+            return fetch(`${Settings.url}/${this.DBarray}${searchString}`)
             .then(r => r.json())
+        }
+    },
+    GETALLBYUSER: {
+        value: function (userId) {
+            return fetch(`${Settings.url}/${this.DBarray}?userId=${userId}`)
         }
     }
 })
