@@ -37,6 +37,9 @@ class NavBar extends Component {
     render() {
         return (
             <nav className="NavBar">
+                <div className="">
+                    Welcome {this.props.activeUser.firstName}
+                </div>
                 <ul className="">
                     <li className="NavItem">
                         <Link className="nav-link" to="/">My Lists</Link>
@@ -49,7 +52,7 @@ class NavBar extends Component {
                             placeholder="Search..." />
                     </li>
                 </ul>
-            </nav >
+            </nav>
         )
     }
 }

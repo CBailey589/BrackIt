@@ -2,73 +2,88 @@ import React, { Component } from "react"
 import UserManager from "../../modules/resourceManagers/UserManager"
 
 export default class Login extends Component {
-    // Set initial state
+
     state = {
-        email: "",
-        pass: "",
-        BrackItId: 0
+        password: "",
+        username: ""
     }
 
     // Update state whenever an input field is edited
-    handleFieldChange = (event) => {
-        const newState = {}
-        newState[event.target.id] = event.target.value
-        this.setState(newState)
+    handleFieldChange = evt => {
+        const stateToChange = {}
+        stateToChange[evt.target.id] = evt.target.value
+        this.setState(stateToChange)
     }
 
-    // Simplistic handler for login submit
-    handleLogin = (event) => {
-        event.preventDefault()
-        return UserManager.GetAll()
-            // matches email entered into Login with email for user in database, and pulls users id to store in local storage
-            .then((userArray) => userArray.filter(user => user.email === this.state.email)[0])
-            .then((user) => this.setState({ id: user.id }))
-            .then(() => {
-                // for now just storing emal/pass/userId in local storage
-                sessionStorage.setItem(
-                    "BrackItCredentials",
-                    JSON.stringify({
-                        email: this.state.email,
-                        pass: this.state.pass,
-                        BrackItId: this.state.id
-                    })
-                )
-                return
-            })
-            .then(() => this.props.history.push("/"))
+    handleRegister = evt => {
+        evt.preventDefault()
+        const newUser = {
+            username: this.state.username,
+            password: this.state.password
+        }
+        if (this.state.username && this.state.password) {
+            UserManager.MATCHLIKE("username", this.state.username)
+                .then(users => {
+                    // check to see if users has any objects
+                    if (users.length) {
+                        alert(`Username ${this.state.username} already exits!`)
+                    } else {
+                        UserManager.POST(newUser)
+                            .then(user => {
+                                sessionStorage.setItem("BrackItId", parseInt(user.id))
+                                this.props.setAuth()
+                            })
+                    }
+                })
+        } else {
+            alert("Please Fill Out Form 😬!")
+        }
+    }
+
+    handleLogin = evt => {
+        evt.preventDefault()
+        if (this.state.username && this.state.password) {
+            UserManager.CUSTOMSEARCH(`users?username=${this.state.username}&password=${this.state.password}`)
+                .then(user => {
+                    if (!user.length) {
+                        alert("Incorrect username or password!")
+                    } else {
+                        sessionStorage.setItem("BrackItId", parseInt(user[0].id))
+                        this.props.setAuth()
+                    }
+                })
+        } else {
+            alert("Please Fill Out Form 😬!")
+        }
     }
 
     render() {
         return (
-            <form
-                onSubmit={this.handleLogin}>
-                <h1 className="">
-                    Please Sign In
-                </h1>
-                <label
-                    htmlFor="inputEmail">
-                    Email address
-                </label>
+            <form className="loginForm">
+                <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
+                <label htmlFor="inputUsername">Username</label>
                 <input
                     onChange={this.handleFieldChange}
-                    type="email"
-                    id="email"
-                    placeholder="Email"
-                    required="" autoFocus="" />
-                <label
-                    htmlFor="inputPassword">
-                    Password
-                </label>
+                    type="username"
+                    id="username"
+                    placeholder={`Username`}
+                    required=""
+                    autoFocus=""
+                />
+                <label htmlFor="inputPassword">Password</label>
                 <input
                     onChange={this.handleFieldChange}
                     type="password"
-                    id="pass"
-                    placeholder="Password"
-                    required="" />
-                <button
-                    type="submit">
+                    id="password"
+                    placeholder={`Password`}
+                    required=""
+                />
+                <button type="submit" onClick={this.handleLogin}>
                     Sign in
-                </button>
+        </button>
+                <button type="submit" onClick={this.handleRegister}>
+                    Register
+        </button>
             </form>
         )
     }

@@ -1,9 +1,9 @@
 import APIManager from "../utilities/APIManager"
 
-const EmployeeManager = Object.create(APIManager, {
-    array: {
+const ListManager = Object.create(APIManager, {
+    DBarray: {
         value: "users"
     }
 })
 
-export default EmployeeManager
+export default ListManager
