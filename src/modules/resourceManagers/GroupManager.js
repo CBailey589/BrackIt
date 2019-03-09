@@ -1,9 +1,9 @@
 import APIManager from "../utilities/APIManager"
 
-const ListManager = Object.create(APIManager, {
+const GroupManager = Object.create(APIManager, {
     DBarray: {
         value: "groups"
     }
 })
 
-export default ListManager
+export default GroupManager

@@ -1,7 +1,6 @@
-import { Route, Redirect } from "react-router-dom"
+import { Route } from "react-router-dom"
 import React, { Component } from "react"
 
-import ListManager from "../modules/resourceManagers/ListManager"
 import UserManager from "../modules/resourceManagers/UserManager"
 import GroupManager from "../modules/resourceManagers/GroupManager"
 
@@ -18,8 +17,8 @@ class ApplicationViews extends Component {
         const newState = {}
 
         let userId = parseInt(sessionStorage.getItem("BrackItId"))
-        let prom1 = Promise.resolve(ListManager.GETALLBYUSER(userId)).then(json => newState.lists = json)
-        let prom2 = Promise.resolve(UserManager.CUSTOMSEARCH(`?id=${userId}&_embed=groupsToUsers`)).then(json => newState.usersGroups = json)
+        let prom1 = Promise.resolve(UserManager.CUSTOMSEARCH(`?id=${userId}&_embed=lists`)).then(json => newState.lists = json[0].lists)
+        let prom2 = Promise.resolve(UserManager.CUSTOMSEARCH(`?id=${userId}&_embed=groupsToUsers`)).then(json => newState.usersGroups = json[0].groupsToUsers)
         let prom3 = Promise.resolve(GroupManager.GETALL()).then(json => newState.groupNames = json)
         Promise.all([prom1, prom2, prom3])
             .then(() => this.setState(newState))
@@ -33,6 +32,7 @@ class ApplicationViews extends Component {
                 <Route exact path="/" render={(props) => {
                     return <UserLists
                     {...props}
+                    activeUser ={this.props.activeUser}
                     lists ={this.state.lists}/>
                 }} />
             </React.Fragment>

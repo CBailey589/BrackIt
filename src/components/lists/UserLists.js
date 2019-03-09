@@ -4,18 +4,13 @@ import "./Lists.css"
 
 class UserLists extends Component {
     render() {
-        let id = parseInt(sessionStorage.BrackItCredentials.split(",")[2].split(":")[1])
-        let usersLists = this.props.lists.filter(list => list.userId === id)
+        let id = this.props.activeUser.id
+        let usersLists = this.props.lists
+        console.log(this.props.lists)
         return (
             <React.Fragment>
-                <section className="ListSection">
-                    {
-                        usersLists.map(list =>
-                            <ListCard key={`listCard--${list.id}`}
-                                list={list}
-                            />
-                        )
-                    }
+                <section className="">
+
                 </section>
             </React.Fragment>
         )
