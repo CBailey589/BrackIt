@@ -1,16 +1,21 @@
 import React, { Component } from 'react'
-import ListCard from "./ListCard"
+
 import "./Lists.css"
+import ListCard from './ListCard';
+
 
 class UserLists extends Component {
     render() {
-        let id = this.props.activeUser.id
-        let usersLists = this.props.lists
-        console.log(this.props.lists)
         return (
             <React.Fragment>
                 <section className="">
-
+                    {
+                        this.props.lists.map(list =>
+                            <ListCard key={`list--${list.id}`}
+                            listItems={this.props.listItems}
+                            list={list} />
+                        )
+                    }
                 </section>
             </React.Fragment>
         )
