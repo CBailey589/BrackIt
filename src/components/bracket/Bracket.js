@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import PrepareBracketList from "../../modules/bracket/PrepareBracketList"
+import DetermineBracketAttributes from "../../modules/bracket/DetermineBracketAttributes"
 
 class Bracket extends Component {
     render() {
@@ -11,7 +12,8 @@ class Bracket extends Component {
         // console.log(items)
         const preparedArray = PrepareBracketList(items)
         // console.log(preparedArray)
-        
+        DetermineBracketAttributes(preparedArray)
+
 
 
         return (
