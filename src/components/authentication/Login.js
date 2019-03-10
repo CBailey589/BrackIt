@@ -43,7 +43,7 @@ export default class Login extends Component {
     handleLogin = evt => {
         evt.preventDefault()
         if (this.state.username && this.state.password) {
-            UserManager.CUSTOMSEARCH(`users?username=${this.state.username}&password=${this.state.password}`)
+            UserManager.CUSTOMSEARCH(`?username=${this.state.username}&password=${this.state.password}`)
                 .then(user => {
                     if (!user.length) {
                         alert("Incorrect username or password!")
