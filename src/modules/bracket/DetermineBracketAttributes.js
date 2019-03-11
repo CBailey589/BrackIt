@@ -1,3 +1,5 @@
+import AddressCodesArrayMaker from "./AddressCodesArrayMaker"
+
 function DetermineBracketAttributes(array) {
     console.log(array.length)
     const bracketInfo = {}
@@ -18,25 +20,28 @@ function DetermineBracketAttributes(array) {
             columnObj.inOut = 0
             columnObj.bottom = columnObj.top - 1
             columnObj.numItemsIn = 1
+            columnObj.addressCodes = AddressCodesArrayMaker(bracketInfo.rounds, i)
             bracketInfo.columnInfo.push(columnObj)
         } else if (i === builderIndex - 1) {
             columnObj.top = Math.ceil(bracketInfo.rows / 2)
             columnObj.inOut = 0
             columnObj.bottom = columnObj.top - 1
             columnObj.numItemsIn = 1
+            columnObj.addressCodes = AddressCodesArrayMaker(bracketInfo.rounds, i)
             bracketInfo.columnInfo.unshift(columnObj)
             bracketInfo.columnInfo.push(columnObj)
         } else {
+            let len = bracketInfo.columnInfo.length
             columnObj.top = Math.pow(2, i - 1)
             columnObj.inOut = Math.pow(2, i)
             columnObj.bottom = columnObj.top - 1
             columnObj.numItemsIn = Math.pow(2, bracketInfo.rounds - i)
+            columnObj.addressCodes = AddressCodesArrayMaker(bracketInfo.rounds, i, bracketInfo.columnInfo[len-1].addressCodes)
             bracketInfo.columnInfo.unshift(columnObj)
             bracketInfo.columnInfo.push(columnObj)
         }
-
     }
-    console.log(bracketInfo)
+    console.log(bracketInfo.columnInfo)
 }
 
 export default DetermineBracketAttributes
