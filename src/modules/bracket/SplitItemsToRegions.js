@@ -15,7 +15,7 @@ function SplitItemsToRegions(array, obj) {
         obj.columnInfo[L1Idx].items = array.splice(0, excessItemsLeft)
         obj.columnInfo[L2Idx].items = array.splice(0, itemsLeft)
         obj.columnInfo[R1Idx].items = array.splice(0, excessItemsRight)
-        obj.columnInfo[R2Idx].itmes = array.splice(0, itemsRight)
+        obj.columnInfo[R2Idx].items = array.splice(0, itemsRight)
     }
 }
 

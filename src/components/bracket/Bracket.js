@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 
 import PrepareBracketList from "../../modules/bracket/PrepareBracketList"
 import DetermineBracketAttributes from "../../modules/bracket/DetermineBracketAttributes"
-import AddressCodesRegionizer from '../../modules/bracket/AddressCodesRegionizer';
-import SplitItemsToRegions from '../../modules/bracket/SplitItemsToRegions';
+import AddressCodesRegionizer from '../../modules/bracket/AddressCodesRegionizer'
+import SplitItemsToRegions from '../../modules/bracket/SplitItemsToRegions'
+import SendItemsToAddresses from "../../modules/bracket/SendItemsToAddresses"
 
 class Bracket extends Component {
     state = {
@@ -19,9 +20,10 @@ class Bracket extends Component {
         const preparedArray = PrepareBracketList(items)
         let bracketInfo = DetermineBracketAttributes(preparedArray)
         AddressCodesRegionizer(bracketInfo)
-        console.log(preparedArray)
-        console.log(bracketInfo)
         SplitItemsToRegions(preparedArray, bracketInfo)
+        SendItemsToAddresses(bracketInfo)
+        console.log(bracketInfo)
+
     }
 
     render() {
