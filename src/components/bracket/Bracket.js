@@ -2,17 +2,29 @@ import React, { Component } from 'react'
 
 import PrepareBracketList from "../../modules/bracket/PrepareBracketList"
 import DetermineBracketAttributes from "../../modules/bracket/DetermineBracketAttributes"
+import AddressCodesRegionizer from '../../modules/bracket/AddressCodesRegionizer';
+import SplitTeamsToRegions from '../../modules/bracket/SplitTeamsToRegions';
 
 class Bracket extends Component {
-    render() {
+    state = {
+        bracketObj: {}
+    }
+
+    componentDidMount() {
+        // const newState = {}
+
         const list = this.props.globalLists.find(list =>
             list.id === parseInt(this.props.match.params.listId)) || { id: 404, name: "No List Found " }
         const items = this.props.globalListItems.filter(item => item.listId === list.id)
         const preparedArray = PrepareBracketList(items)
-        DetermineBracketAttributes(preparedArray)
+        let bracketInfo = DetermineBracketAttributes(preparedArray)
+        AddressCodesRegionizer(bracketInfo)
+        console.log(preparedArray)
+        console.log(bracketInfo)
+        SplitTeamsToRegions(preparedArray, bracketInfo)
+    }
 
-
-
+    render() {
         return (
             <React.Fragment>
                 <section className="">
