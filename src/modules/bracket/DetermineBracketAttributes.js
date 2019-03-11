@@ -36,7 +36,7 @@ function DetermineBracketAttributes(array) {
             columnObj.inOut = Math.pow(2, i)
             columnObj.bottom = columnObj.top - 1
             columnObj.numItemsIn = Math.pow(2, bracketInfo.rounds - i)
-            columnObj.addressCodes = AddressCodesArrayMaker(bracketInfo.rounds, i, bracketInfo.columnInfo[len-1].addressCodes)
+            columnObj.addressCodes = AddressCodesArrayMaker(bracketInfo.rounds, i, bracketInfo.columnInfo[0].addressCodes)
             bracketInfo.columnInfo.unshift(columnObj)
             bracketInfo.columnInfo.push(columnObj)
         }

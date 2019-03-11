@@ -1,17 +1,19 @@
 function AddressCodesArrayMaker(totalRounds, currentRound, nextRoundsArray) {
     if (totalRounds < currentRound) {
-        return [{ "winner": "" }]
+        return ["winner"]
     }
     else if (totalRounds === currentRound) {
-        return [{ "1": "" }]
+        return ["1"]
     }
     else {
         let expandedArray = []
         nextRoundsArray.forEach(address => {
-            for(var i = 1; i <= 2; i++){
-                let newAddress = Object.keys(address)[0] += i.toString()
-                expandedArray.push(newAddress)
-            }
+            let add1 = address
+            let add2 = address
+            let newAddress1 = add1 += "1"
+            let newAddress2 = add2 += "2"
+            expandedArray.push(newAddress1)
+            expandedArray.push(newAddress2)
         });
         return expandedArray
     }
