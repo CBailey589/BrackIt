@@ -41,8 +41,8 @@ class Bracket extends Component {
     render() {
         let rowIdxs = this.state.bracketObj.rowIdxs
         let colIdxs = this.state.bracketObj.colIdxs
-        let containerHeight = (this.state.bracketObj.rows * 35) + 20
-        let containerWidth = (this.state.bracketObj.columns * 200) + 100
+        let containerHeight = (this.state.bracketObj.rows * 20) + 10
+        let containerWidth = (this.state.bracketObj.columns * 150) + 75
         return (
             <React.Fragment>
                 <section className="BracketSquareContainer" style={{ height: `${containerHeight}px`, width: `${containerWidth}px` }}>

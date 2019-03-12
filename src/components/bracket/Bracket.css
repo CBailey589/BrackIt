@@ -1,8 +1,8 @@
 .BracketSquareContainer {
     border: 2px solid orange;
     display: flex;
-    width: 3300px;
-    height: 2550px;
+    /* width: 3300px;
+    height: 2550px; */
     overflow: scroll;
     flex-flow: row wrap;
 
@@ -10,6 +10,12 @@
 .BracketSquare {
     display: flex;
     border: 1px dotted blue;
-    height: 35px;
-    width: 200px;
+    height: 20px;
+    width: 150px;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.HoldsItem {
+    border-bottom: 3px solid green;
 }
