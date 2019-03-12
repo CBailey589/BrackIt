@@ -5,6 +5,7 @@ import DetermineBracketAttributes from "../../modules/bracket/DetermineBracketAt
 import AddressCodesRegionizer from '../../modules/bracket/AddressCodesRegionizer'
 import SplitItemsToRegions from '../../modules/bracket/SplitItemsToRegions'
 import SendItemsToAddresses from "../../modules/bracket/SendItemsToAddresses"
+import MakeRangeArrays from "../../modules/bracket/MakeRangeArrays"
 
 import BracketSquare from "./BracketSquare"
 import "./Bracket.css"
@@ -17,8 +18,8 @@ class Bracket extends Component {
             AddressesWithItems: {},
             columnInfo: [],
             rounds: 0,
-            rowIdxArray: [],
-            columnIdxArray: []
+            rowIdxs: [],
+            colIdxs: []
         }
     }
 
@@ -32,40 +33,29 @@ class Bracket extends Component {
         let bracketInfo = DetermineBracketAttributes(preparedArray)
         AddressCodesRegionizer(bracketInfo)
         SplitItemsToRegions(preparedArray, bracketInfo)
-        newState.bracketObj = SendItemsToAddresses(bracketInfo)
-        console.log(newState.bracketObj)
+        bracketInfo = SendItemsToAddresses(bracketInfo)
+        newState.bracketObj = MakeRangeArrays(bracketInfo)
         this.setState(newState)
     }
 
     render() {
-
-        let rows = []
-        for (var row = 1; row === this.state.bracketObj.rows; row++) {
-            rows[row] = row
-        }
-        console.log(this.state.bracketObj.rows)
-        console.log("rows:", rows)
-        let columns = []
-        for (var col = 1; col === this.state.bracketObj.columns; col++) {
-            columns.push(col)
-        }
-        console.log(this.state.bracketObj.columns)
-        console.log("columns:", columns)
+        let rowIdxs = this.state.bracketObj.rowIdxs
+        let colIdxs = this.state.bracketObj.colIdxs
+        let containerHeight = (this.state.bracketObj.rows * 35) + 20
+        let containerWidth = (this.state.bracketObj.columns * 200) + 100
         return (
             <React.Fragment>
-                <div>
+                <section className="BracketSquareContainer" style={{ height: `${containerHeight}px`, width: `${containerWidth}px` }}>
                     {
-                        columns.map(colIdx =>
-                            rows.map(rowIdx =>
-                                <BracketSquare
-                                    colIdx={this.colIdx}
-                                    rowIdx={this.rowIdx}
-                                    bracketObj={this.state.bracketObj}
-                                />
-                            )
-                        )
+                        rowIdxs.map(row =>
+                            colIdxs.map(col =>
+                                <BracketSquare key={`col-${col}-row-${row}`}
+                                    row={row}
+                                    col={col}
+                                    bracketObj={this.state.bracketObj} />
+                            ))
                     }
-                </div>
+                </section>
             </React.Fragment>
         )
     }
