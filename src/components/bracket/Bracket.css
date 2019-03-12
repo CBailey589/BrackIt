@@ -29,3 +29,7 @@
 .InsideRight {
     border-left: 3px solid black;
 }
+
+.ButtonSquare {
+    background-color: yellow;
+}
