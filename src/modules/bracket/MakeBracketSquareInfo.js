@@ -17,7 +17,11 @@ function MakeBracketSquareInfo(col, row, bracketObj) {
     }
 
     //Check to see if current square should have an item in it
-    if (top === row) {
+    if (top === row && firstLastCol === false) {
+        squareInfo.holdsItem = true
+        squareInfo.itemKey = columnInfo.addressCodes[0]
+        squareInfo.itemText = addressesWithItems[squareInfo.itemKey].itemText
+    } else if (firstLastCol === true && top === row && numItemsInCol > 0) {
         squareInfo.holdsItem = true
         squareInfo.itemKey = columnInfo.addressCodes[0]
         squareInfo.itemText = addressesWithItems[squareInfo.itemKey].itemText
@@ -38,7 +42,7 @@ function MakeBracketSquareInfo(col, row, bracketObj) {
         } else {
             squareInfo.inside = "InsideRight"
         }
-    }  else if (firstLastCol === true && row > top && row < (bracketObj.rows - bottom + 1) && (Math.floor((row - top) / (inOut + 0.1)) % 2 === 0) && ((row-top)/inOut) <= numItemsInCol) {
+    } else if (firstLastCol === true && row > top && row < (bracketObj.rows - bottom + 1) && (Math.floor((row - top) / (inOut + 0.1)) % 2 === 0) && ((row - top) / inOut) <= numItemsInCol) {
         if (col < regionBreak) {
             squareInfo.inside = "InsideLeft"
         } else {
