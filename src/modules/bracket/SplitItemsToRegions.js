@@ -4,7 +4,12 @@ function SplitItemsToRegions(array, obj) {
         const numItems = array.length
         const numItemsInFullRounds = Math.pow(2, fullRounds)
         const excessItemsTotal = (numItems - numItemsInFullRounds) * 2
-        const excessItemsLeft = (excessItemsTotal / 2) + 1
+        let excessItemsLeft = 0
+        if ((excessItemsTotal / 2) % 2 === 0) {
+            excessItemsLeft = (excessItemsTotal / 2)
+        } else {
+            excessItemsLeft = (excessItemsTotal / 2) + 1
+        }
         const excessItemsRight = excessItemsTotal - excessItemsLeft
         const itemsLeft = ((numItemsInFullRounds / 2) - excessItemsLeft / 2)
         const itemsRight = ((numItemsInFullRounds / 2) - excessItemsRight / 2)
