@@ -18,7 +18,6 @@ function MakeBracketSquareInfo(col, row, bracketObj) {
 
     //Check to see if current square should have an item in it
     if (top === row) {
-        console.log(columnInfo)
         squareInfo.holdsItem = true
         squareInfo.itemKey = columnInfo.addressCodes[0]
         squareInfo.itemText = addressesWithItems[squareInfo.itemKey].itemText
@@ -32,7 +31,14 @@ function MakeBracketSquareInfo(col, row, bracketObj) {
         squareInfo.itemText = addressesWithItems[squareInfo.itemKey].itemText
     }
 
+    // Check to see if boxes should have side borders, and which side they should be on
     if (firstLastCol === false && row > top && row < (bracketObj.rows - bottom + 1) && (Math.floor((row - top) / (inOut + 0.1)) % 2 === 0)) {
+        if (col < regionBreak) {
+            squareInfo.inside = "InsideLeft"
+        } else {
+            squareInfo.inside = "InsideRight"
+        }
+    }  else if (firstLastCol === true && row > top && row < (bracketObj.rows - bottom + 1) && (Math.floor((row - top) / (inOut + 0.1)) % 2 === 0) && ((row-top)/inOut) <= numItemsInCol) {
         if (col < regionBreak) {
             squareInfo.inside = "InsideLeft"
         } else {

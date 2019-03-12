@@ -5,7 +5,7 @@
     height: 2550px; */
     overflow: scroll;
     flex-flow: row wrap;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-content: space-between;
 
 }
@@ -20,12 +20,12 @@
 }
 
 .HoldsItem {
-    border-bottom: 3px solid green;
+    border-bottom: 3px solid black;
 }
 
 .InsideLeft {
-    border-right: 3px solid green;
+    border-right: 3px solid black;
 }
 .InsideRight {
-    border-left: 3px solid green;
+    border-left: 3px solid black;
 }
