@@ -10,9 +10,9 @@ class UserLists extends Component {
             <React.Fragment>
                 <section className="">
                     {
-                        this.props.lists.map(list =>
+                        this.props.usersLists.map(list =>
                             <ListCard key={`list--${list.id}`}
-                            listItems={this.props.listItems}
+                            usersListItems={this.props.usersListItems}
                             list={list} />
                         )
                     }
