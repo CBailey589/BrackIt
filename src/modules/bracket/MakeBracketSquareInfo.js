@@ -1,6 +1,6 @@
 function MakeBracketSquareInfo(col, row, bracketObj) {
     const squareInfo = {
-        itemKey : "",
+        itemKey: "",
         itemText: ""
     }
     let columnInfo = bracketObj.columnInfo[col - 1]
@@ -20,6 +20,7 @@ function MakeBracketSquareInfo(col, row, bracketObj) {
         squareInfo.itemKey = columnInfo.addressCodes[0]
     } else if (firstLastCol && Number.isInteger((row - top) / inOut) && ((row - top) - inOut) <= numItemsInCol) {
         squareInfo.holdsItem = true
+        squareInfo.itemKey = columnInfo.addressCodes[(row - top / inOut)]
     } else if (firstLastCol === false && Number.isInteger((row - top) / inOut)) {
         squareInfo.holdsItem = true
     }
@@ -29,7 +30,7 @@ function MakeBracketSquareInfo(col, row, bracketObj) {
 
 
 
-        let classList = []
+    let classList = []
     if (squareInfo.holdsItem === true) {
         classList.push("HoldsItem")
     }

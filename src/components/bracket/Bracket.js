@@ -30,12 +30,15 @@ class Bracket extends Component {
             list.id === parseInt(this.props.match.params.listId)) || { id: 404, name: "No List Found " }
         const items = this.props.globalListItems.filter(item => item.listId === list.id)
         const preparedArray = PrepareBracketList(items)
-        let bracketInfo = DetermineBracketAttributes(preparedArray)
-        AddressCodesRegionizer(bracketInfo)
-        SplitItemsToRegions(preparedArray, bracketInfo)
-        bracketInfo = SendItemsToAddresses(bracketInfo)
-        newState.bracketObj = MakeRangeArrays(bracketInfo)
-        this.setState(newState)
+        console.log(preparedArray)
+        if (preparedArray.length > 0) {
+            let bracketInfo = DetermineBracketAttributes(preparedArray)
+            bracketInfo = AddressCodesRegionizer(bracketInfo)
+            bracketInfo = SplitItemsToRegions(preparedArray, bracketInfo)
+            bracketInfo = SendItemsToAddresses(bracketInfo)
+            newState.bracketObj = MakeRangeArrays(bracketInfo)
+            this.setState(newState)
+        }
     }
 
     render() {
