@@ -9,12 +9,10 @@ class BracketSqaure extends Component {
         const row = this.props.row
         let squareInfo = MakeBracketSquareInfo(col, row, bracketObj)
         const classList = `BracketSquare ${squareInfo.classList}`
-        console.log(squareInfo)
         return (
             <React.Fragment>
                 <div className={`${classList}`}>
-                    ({col}, {row})
-                    {squareInfo.itemKey}
+                    {squareInfo.itemText}
                 </div>
             </React.Fragment>
         )

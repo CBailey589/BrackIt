@@ -7,24 +7,38 @@ function MakeBracketSquareInfo(col, row, bracketObj) {
     let numItemsInCol = columnInfo.items.length
     let top = columnInfo.top
     let inOut = columnInfo.inOut
+    let bottom = columnInfo.bottom
+    let regionBreak = Math.floor(bracketObj.columns / 2)
     let firstLastCol = false
-
-    console.log(columnInfo)
-
+    let addressesWithItems = bracketObj.AddressesWithItems
+    // Check to see if current column is the first or last column
     if (col === 1 || col === bracketObj.columns) {
         firstLastCol = true
     }
 
+    //Check to see if current square should have an item in it
     if (top === row) {
+        console.log(columnInfo)
         squareInfo.holdsItem = true
         squareInfo.itemKey = columnInfo.addressCodes[0]
-    } else if (firstLastCol && Number.isInteger((row - top) / inOut) && ((row - top) - inOut) <= numItemsInCol) {
+        squareInfo.itemText = addressesWithItems[squareInfo.itemKey].itemText
+    } else if (firstLastCol && Number.isInteger((row - top) / inOut) && ((row - top) / inOut) <= numItemsInCol - 1) {
         squareInfo.holdsItem = true
-        squareInfo.itemKey = columnInfo.addressCodes[(row - top / inOut)]
+        squareInfo.itemKey = columnInfo.addressCodes[(row - top) / inOut]
+        squareInfo.itemText = addressesWithItems[squareInfo.itemKey].itemText
     } else if (firstLastCol === false && Number.isInteger((row - top) / inOut)) {
         squareInfo.holdsItem = true
+        squareInfo.itemKey = columnInfo.addressCodes[(row - top) / inOut]
+        squareInfo.itemText = addressesWithItems[squareInfo.itemKey].itemText
     }
 
+    if (firstLastCol === false && row > top && row < (bracketObj.rows - bottom + 1) && (Math.floor((row - top) / (inOut + 0.1)) % 2 === 0)) {
+        if (col < regionBreak) {
+            squareInfo.inside = "InsideLeft"
+        } else {
+            squareInfo.inside = "InsideRight"
+        }
+    }
 
 
 
@@ -33,6 +47,9 @@ function MakeBracketSquareInfo(col, row, bracketObj) {
     let classList = []
     if (squareInfo.holdsItem === true) {
         classList.push("HoldsItem")
+    }
+    if (squareInfo.inside) {
+        classList.push(`${squareInfo.inside}`)
     }
     squareInfo.classList = classList.join(" ")
     return squareInfo
