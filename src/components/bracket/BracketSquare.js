@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import MakeBracketSquareInfo from "../../modules/bracket/MakeBracketSquareInfo"
+import ConvertColumnToRound from "../../modules/bracket/ConvertColumnToRound"
 
 class BracketSqaure extends Component {
     render() {
@@ -8,6 +9,7 @@ class BracketSqaure extends Component {
         const col = this.props.col
         const row = this.props.row
         let squareInfo = MakeBracketSquareInfo(col, row, bracketObj)
+        let round = ConvertColumnToRound(col, bracketObj.columns)
         const classList = `BracketSquare ${squareInfo.classList}`
         return (
             <React.Fragment>
@@ -16,14 +18,14 @@ class BracketSqaure extends Component {
                     {
                         (classList.includes("Button"))
                             ? <div>
-                                <button key={`${col}-${row}-Above`}>
+                                <button key={`${round}-${row}-Above`}>
                                     U
                                 </button>
-                                <button key={`${col}-${row}-Below`}>
+                                <button key={`${round}-${row}-Below`}>
                                     D
                                 </button>
-                                <button key={`${col}-${row}-Rand`}>
-                                    R
+                                <button key={`${round}-${row}-Randj`}>
+                                    ?
                                 </button>
                             </div>
                             : null
