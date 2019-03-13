@@ -47,16 +47,18 @@ class Bracket extends Component {
         let containerWidth = (this.state.bracketObj.columns * 150) + 75
         return (
             <React.Fragment>
-                <section className="BracketSquareContainer" style={{ height: `${containerHeight}px`, width: `${containerWidth}px` }}>
-                    {
-                        rowIdxs.map(row =>
-                            colIdxs.map(col =>
-                                <BracketSquare key={`col-${col}-row-${row}`}
-                                    row={row}
-                                    col={col}
-                                    bracketObj={this.state.bracketObj} />
-                            ))
-                    }
+                <section className="BracketView">
+                    <section className="BracketSquareContainer" style={{ height: `${containerHeight}px`, width: `${containerWidth}px` }}>
+                        {
+                            rowIdxs.map(row =>
+                                colIdxs.map(col =>
+                                    <BracketSquare key={`col-${col}-row-${row}`}
+                                        row={row}
+                                        col={col}
+                                        bracketObj={this.state.bracketObj} />
+                                ))
+                        }
+                    </section>
                 </section>
             </React.Fragment>
         )
