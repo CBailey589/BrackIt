@@ -1,3 +1,6 @@
+*{
+    margin: 0px;
+}
 /* .BracketView {
     border: 2px solid darkcyan;
     display: flex;
@@ -6,21 +9,21 @@
 } */
 
 .BracketSquareContainer {
+    background-color: rgb(238, 238, 238);
     border: 2px solid orange;
     display: flex;
     /* width: 3300px;
     height: 2550px; */
     overflow: scroll;
     flex-flow: row wrap;
-    justify-content: space-around;
-    align-content: space-between;
 }
 
 .BracketSquare {
-    border: 1px dotted blue;
+    /* border: 1px dotted blue; */
     display: flex;
     height: 20px;
     width: 150px;
+    box-sizing: border-box;
     justify-content: center;
     align-items: flex-end;
     font-size: 0.7em;
@@ -38,10 +41,19 @@
     border-left: 3px solid black;
 }
 
-.ButtonSquare {
+/* .ButtonSquare {
     background-color: yellow;
 }
 
 .ChampButtons {
     background-color: pink;
+} */
+
+.BracketSquareContainer button {
+    background-color: black;
+    color: orange;
+    font-size: .8em;
+    font-weight: bolder;
+    height: 18px;
+    width: 18px;
 }
