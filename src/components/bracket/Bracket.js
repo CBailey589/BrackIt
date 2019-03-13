@@ -24,7 +24,9 @@ class Bracket extends Component {
     }
 
     advanceItemToNextRound = (num, evt) => {
-        // var elements = document.querySelectorAll('input[id^="id_qtedje_"]');
+        let newState = {}
+        newState.bracketObj = this.state.bracketObj
+
         let multiplier = 0
         if (num === 1) {
             multiplier = -1
@@ -42,8 +44,15 @@ class Bracket extends Component {
 
         let idToFind = `${col}${row + multiplier * (Math.pow(2, (round - 1)))}`
         let squareWithItem = document.querySelector(`div[id^="${idToFind}"]`)
-        console.log(squareWithItem.innerHTML, squareWithItem.id)
 
+        let addressToAdvanceFrom = squareWithItem.id.split("--")[1]
+        let addressToAdvanceTo = addressToAdvanceFrom.substring(0, addressToAdvanceFrom.length - 1)
+
+        newState.bracketObj.AddressesWithItems[addressToAdvanceTo] = this.state.bracketObj.AddressesWithItems[addressToAdvanceFrom]
+
+        // Erases any items that have advanced to future rounds if a user changes the winner of a previous round:
+        
+        this.setState(newState)
     }
 
     componentDidMount() {
