@@ -18,3 +18,13 @@
     height: 200px;
     overflow-y: scroll;
 }
+
+.ItemSection {
+    background-color: pink;
+    border: 1px dotted gold;
+    display: flex;
+    min-height: 20px;
+    justify-content: space-between;
+    align-items: center;
+
+}

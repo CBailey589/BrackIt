@@ -12,8 +12,9 @@ class UserLists extends Component {
                     {
                         this.props.usersLists.map(list =>
                             <ListCard key={`list--${list.id}`}
-                            usersListItems={this.props.usersListItems}
-                            list={list} />
+                                usersListItems={this.props.usersListItems}
+                                list={list}
+                                changeItemStatus={this.props.changeItemStatus} />
                         )
                     }
                 </section>
