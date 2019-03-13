@@ -1,3 +1,10 @@
+/* .BracketView {
+    border: 2px solid darkcyan;
+    display: flex;
+    width: 96%;
+
+} */
+
 .BracketSquareContainer {
     border: 2px solid orange;
     display: flex;
@@ -28,4 +35,8 @@
 }
 .InsideRight {
     border-left: 3px solid black;
+}
+
+.ButtonSquare {
+    background-color: yellow;
 }

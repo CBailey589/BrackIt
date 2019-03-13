@@ -50,17 +50,30 @@ function MakeBracketSquareInfo(col, row, bracketObj) {
         }
     }
 
+    //Check to see if button should be in square
+    // if (firstLastCol === false && row > top && row < (bracketObj.rows - bottom + 1) && Math.floor((row - top) / (inOut + 0.1)) % 2 === 0) {
+    //     squareInfo.test = true
+    // }
+    if (firstLastCol === false && row % inOut === 0 && (row / inOut) % 2 !== 0) {
+        squareInfo.button = true
+    } else if (firstLastCol === true && row % inOut === 0 && (row / inOut) % 2 !== 0 && ((row - top) / inOut) <= numItemsInCol) {
+        squareInfo.button = true
+    }
 
 
 
 
-    let classList = []
+        let classList = []
     if (squareInfo.holdsItem === true) {
         classList.push("HoldsItem")
     }
     if (squareInfo.inside) {
         classList.push(`${squareInfo.inside}`)
     }
+    if (squareInfo.button === true) {
+        classList.push("ButtonSquare")
+    }
+
     squareInfo.classList = classList.join(" ")
     return squareInfo
 }

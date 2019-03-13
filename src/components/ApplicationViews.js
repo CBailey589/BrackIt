@@ -11,7 +11,6 @@ import Bracket from "./bracket/Bracket";
 
 class ApplicationViews extends Component {
     state = {
-        //
         usersLists: [],
         usersListItems: [],
         groupNames: [],
