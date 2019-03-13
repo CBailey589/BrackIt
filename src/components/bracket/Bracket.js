@@ -23,6 +23,44 @@ class Bracket extends Component {
         }
     }
 
+    advanceItemToNextRound = (num, evt) => {
+        let newState = {}
+        newState.bracketObj = this.state.bracketObj
+
+        let multiplier = 0
+        if (num === 1) {
+            multiplier = -1
+        } else if (num === 2) {
+            multiplier = 1
+        } else {
+            let rand = Math.round(Math.random())
+            rand === 0 ? multiplier = 1 : multiplier = -1
+        }
+
+        let id = evt.target.id.split("-")
+        let round = parseInt(id[0])
+        let row = parseInt(id[1])
+        let col = parseInt(id[2])
+
+        let idToFind = `${col}${row + multiplier * (Math.pow(2, (round - 1)))}`
+        let squareWithItem = document.querySelector(`div[id^="${idToFind}"]`)
+
+        let addressToAdvanceFrom = squareWithItem.id.split("--")[1]
+        let addressToAdvanceTo = addressToAdvanceFrom.substring(0, addressToAdvanceFrom.length - 1)
+
+        newState.bracketObj.AddressesWithItems[addressToAdvanceTo] = this.state.bracketObj.AddressesWithItems[addressToAdvanceFrom]
+
+        for (let index = 1; index < addressToAdvanceTo.length - 1; index++) {
+            if (addressToAdvanceTo.length - index >= 2) {
+                let furtherAddress = addressToAdvanceTo.substring(0, addressToAdvanceTo.length - index)
+                newState.bracketObj.AddressesWithItems[furtherAddress] = ""
+            }
+
+        }
+
+        this.setState(newState)
+    }
+
     componentDidMount() {
         const newState = {}
 
@@ -55,7 +93,8 @@ class Bracket extends Component {
                                     <BracketSquare key={`col-${col}-row-${row}`}
                                         row={row}
                                         col={col}
-                                        bracketObj={this.state.bracketObj} />
+                                        bracketObj={this.state.bracketObj}
+                                        advanceItemToNextRound={this.advanceItemToNextRound} />
                                 ))
                         }
                     </section>
