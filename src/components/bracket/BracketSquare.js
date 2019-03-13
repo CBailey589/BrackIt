@@ -13,19 +13,34 @@ class BracketSqaure extends Component {
         const classList = `BracketSquare ${squareInfo.classList}`
         return (
             <React.Fragment>
-                <div className={`${classList}`}>
+                <div className={`${classList}`} id={`${col}${row}--${squareInfo.itemKey}`}>
                     {squareInfo.itemText}
                     {
                         (classList.includes("Button"))
                             ? <div>
-                                <button key={`${round}-${row}-Above`}>
+                                <button key={`${round}-${row}-${col}-Above`}
+                                id={`${round}-${row}-${col}`}
+                                    onClick={(evt) => {
+                                        this.props.advanceItemToNextRound(1,evt)
+                                    }}
+                                >
                                     U
                                 </button>
-                                <button key={`${round}-${row}-Below`}>
-                                    D
-                                </button>
-                                <button key={`${round}-${row}-Randj`}>
+                                <button key={`${round}-${row}-${col}-Below`}
+                                id={`${round}-${row}-${col}`}
+                                    onClick={(evt) => {
+                                        this.props.advanceItemToNextRound(3,evt)
+                                    }}
+                                >
                                     ?
+                                </button>
+                                <button key={`${round}-${row}-${col}-Randj`}
+                                id={`${round}-${row}-${col}`}
+                                    onClick={(evt) => {
+                                        this.props.advanceItemToNextRound(2,evt)
+                                    }}
+                                >
+                                    D
                                 </button>
                             </div>
                             : null

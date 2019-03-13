@@ -23,6 +23,29 @@ class Bracket extends Component {
         }
     }
 
+    advanceItemToNextRound = (num, evt) => {
+        // var elements = document.querySelectorAll('input[id^="id_qtedje_"]');
+        let multiplier = 0
+        if (num === 1) {
+            multiplier = -1
+        } else if (num === 2) {
+            multiplier = 1
+        } else {
+            let rand = Math.round(Math.random())
+            rand === 0 ? multiplier = 1 : multiplier = -1
+        }
+
+        let id = evt.target.id.split("-")
+        let round = parseInt(id[0])
+        let row = parseInt(id[1])
+        let col = parseInt(id[2])
+
+        let idToFind = `${col}${row + multiplier * (Math.pow(2, (round - 1)))}`
+        let squareWithItem = document.querySelector(`div[id^="${idToFind}"]`)
+        console.log(squareWithItem.innerHTML, squareWithItem.id)
+
+    }
+
     componentDidMount() {
         const newState = {}
 
@@ -55,7 +78,8 @@ class Bracket extends Component {
                                     <BracketSquare key={`col-${col}-row-${row}`}
                                         row={row}
                                         col={col}
-                                        bracketObj={this.state.bracketObj} />
+                                        bracketObj={this.state.bracketObj}
+                                        advanceItemToNextRound={this.advanceItemToNextRound} />
                                 ))
                         }
                     </section>
