@@ -24,9 +24,14 @@ class ListCard extends Component {
                     <div className="ListItems">
                         {
                             listItems.map((item, index) =>
-                                <div key={`item--${(index) + 1}`}>
-                                    {item.itemText}
-                                </div>
+                                <section key={`itemSection--${index + 1}`}
+                                className="ItemSection">
+                                    <div key={`item--${index + 1}`}>
+                                        {item.itemText}
+                                    </div>
+                                    <input type="checkbox">
+                                    </input>
+                                </section>
                             )
                         }
                     </div>
