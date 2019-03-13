@@ -50,8 +50,14 @@ class Bracket extends Component {
 
         newState.bracketObj.AddressesWithItems[addressToAdvanceTo] = this.state.bracketObj.AddressesWithItems[addressToAdvanceFrom]
 
-        // Erases any items that have advanced to future rounds if a user changes the winner of a previous round:
-        
+        for (let index = 1; index < addressToAdvanceTo.length - 1; index++) {
+            if (addressToAdvanceTo.length - index >= 2) {
+                let furtherAddress = addressToAdvanceTo.substring(0, addressToAdvanceTo.length - index)
+                newState.bracketObj.AddressesWithItems[furtherAddress] = ""
+            }
+
+        }
+
         this.setState(newState)
     }
 
