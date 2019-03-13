@@ -33,13 +33,28 @@ class ApplicationViews extends Component {
             .then(() => this.setState(newState))
     }
 
+    changeItemStatus = (evt) => {
+        // debugger
+        let newState = this.state
+        const checkboxId = parseInt(evt.target.id.split("--")[1])
+        if (evt.target.checked) {
+            newState.usersListItems.find(item => item.id === checkboxId).itemActive = true
+            newState.globalListItems.find(item => item.id === checkboxId).itemActive = true
+        } else {
+            newState.usersListItems.find(item => item.id === checkboxId).itemActive = false
+            newState.globalListItems.find(item => item.id === checkboxId).itemActive = false
+        }
+        this.setState(newState)
+    }
+
     render() {
         return (
             <React.Fragment>
                 <Route exact path="/" render={(props) => {
                     return <UserLists
                         usersLists={this.state.usersLists}
-                        usersListItems={this.state.usersListItems} />
+                        usersListItems={this.state.usersListItems}
+                        changeItemStatus={this.changeItemStatus} />
                 }} />
                 <Route exact path="/bracket/:listId(\d+)" render={(props) => {
                     return <Bracket

@@ -25,12 +25,15 @@ class ListCard extends Component {
                         {
                             listItems.map((item, index) =>
                                 <section key={`itemSection--${index + 1}`}
-                                className="ItemSection">
+                                    className="ItemSection">
                                     <div key={`item--${index + 1}`}>
                                         {item.itemText}
                                     </div>
-                                    <input type="checkbox">
-                                    </input>
+                                    <input type="checkbox"
+                                        id={`checkbox--${item.id}`}
+                                        checked={item.itemActive}
+                                        onClick={(evt) => this.props.changeItemStatus(evt)}
+                                        readOnly />
                                 </section>
                             )
                         }
