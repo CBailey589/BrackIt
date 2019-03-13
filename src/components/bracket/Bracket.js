@@ -50,13 +50,41 @@ class Bracket extends Component {
 
         newState.bracketObj.AddressesWithItems[addressToAdvanceTo] = this.state.bracketObj.AddressesWithItems[addressToAdvanceFrom]
 
-        for (let index = 1; index < addressToAdvanceTo.length - 1; index++) {
+        for (let index = 1; index < addressToAdvanceTo.length; index++) {
             if (addressToAdvanceTo.length - index >= 2) {
                 let furtherAddress = addressToAdvanceTo.substring(0, addressToAdvanceTo.length - index)
                 newState.bracketObj.AddressesWithItems[furtherAddress] = ""
+            } else if (addressToAdvanceFrom.length - index === 2) {
+                newState.bracketObj.AddressesWithItems["winner"] = ""
             }
-
         }
+        this.setState(newState)
+    }
+
+    pickChamp = (num, evt) => {
+        let newState = {}
+        newState.bracketObj = this.state.bracketObj
+
+        let modifier = 0
+        if (num === 1) {
+            modifier = -1
+        } else if (num === 2) {
+            modifier = 1
+        } else {
+            let rand = Math.round(Math.random())
+            rand === 0 ? modifier = 1 : modifier = -1
+        }
+
+        let id = evt.target.id.split("-")
+        let col = parseInt(id[2])
+        let row = parseInt(id[1])
+
+        let idToFind = `${col + modifier}${row - 1}`
+        let squareWithItem = document.querySelector(`div[id^="${idToFind}"]`)
+
+        let addressToAdvanceFrom = squareWithItem.id.split("--")[1]
+
+        newState.bracketObj.AddressesWithItems["winner"] = this.state.bracketObj.AddressesWithItems[addressToAdvanceFrom]
 
         this.setState(newState)
     }
@@ -94,7 +122,8 @@ class Bracket extends Component {
                                         row={row}
                                         col={col}
                                         bracketObj={this.state.bracketObj}
-                                        advanceItemToNextRound={this.advanceItemToNextRound} />
+                                        advanceItemToNextRound={this.advanceItemToNextRound}
+                                        pickChamp={this.pickChamp} />
                                 ))
                         }
                     </section>

@@ -16,7 +16,7 @@ class BracketSqaure extends Component {
                 <div className={`${classList}`} id={`${col}${row}--${squareInfo.itemKey}`}>
                     {squareInfo.itemText}
                     {
-                        (classList.includes("Button"))
+                        (classList.includes("ButtonSquare"))
                             ? <div>
                                 <button key={`${round}-${row}-${col}-Above`}
                                 id={`${round}-${row}-${col}`}
@@ -41,6 +41,36 @@ class BracketSqaure extends Component {
                                     }}
                                 >
                                     D
+                                </button>
+                            </div>
+                            : null
+                    }
+                    {
+                        (classList.includes("ChampButtons"))
+                            ? <div>
+                                <button key={`${row}-${col}-Left`}
+                                id={`${round}-${row}-${col}`}
+                                    onClick={(evt) => {
+                                        this.props.pickChamp(1,evt)
+                                    }}
+                                >
+                                    L
+                                </button>
+                                <button key={`${row}-${col}-Right`}
+                                id={`${round}-${row}-${col}`}
+                                    onClick={(evt) => {
+                                        this.props.pickChamp(3,evt)
+                                    }}
+                                >
+                                    ?
+                                </button>
+                                <button key={`${row}-${col}-Rand`}
+                                id={`${round}-${row}-${col}`}
+                                    onClick={(evt) => {
+                                        this.props.pickChamp(2,evt)
+                                    }}
+                                >
+                                    R
                                 </button>
                             </div>
                             : null
