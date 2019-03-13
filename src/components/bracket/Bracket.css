@@ -14,8 +14,8 @@
     flex-flow: row wrap;
     justify-content: space-around;
     align-content: space-between;
-
 }
+
 .BracketSquare {
     border: 1px dotted blue;
     display: flex;
@@ -33,10 +33,15 @@
 .InsideLeft {
     border-right: 3px solid black;
 }
+
 .InsideRight {
     border-left: 3px solid black;
 }
 
 .ButtonSquare {
     background-color: yellow;
+}
+
+.ChampButtons {
+    background-color: pink;
 }
