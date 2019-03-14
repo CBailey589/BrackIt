@@ -50,8 +50,9 @@ class ApplicationViews extends Component {
     render() {
         return (
             <React.Fragment>
-                <Route exact path="/" render={() => {
+                <Route exact path="/" render={(props) => {
                     return <UserLists
+                        {...props}
                         usersLists={this.state.usersLists}
                         usersListItems={this.state.usersListItems}
                         changeItemStatus={this.changeItemStatus}
