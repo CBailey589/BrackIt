@@ -8,6 +8,11 @@ class UserLists extends Component {
     render() {
         return (
             <React.Fragment>
+                <div className="">
+                    <button>
+                        Make New List Button
+                    </button>
+                </div>
                 <section className="">
                     {
                         this.props.usersLists.map(list =>

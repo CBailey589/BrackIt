@@ -38,8 +38,8 @@ class ListCard extends Component {
                             )
                         }
                     </div>
-                    <div className="ListButtons">
-                        <button className="ListEditButton">
+                    <div className="">
+                        <button className="">
                             Edit List
                         </button>
                         <Link className="nav-link" to={`/bracket/${list.id}`}>
@@ -50,6 +50,19 @@ class ListCard extends Component {
                     </div>
                     <div className="ListFooter">
                         This list is {privacySetting}
+                    </div>
+                    <div>
+                        <button className="">
+                            Delete
+                        </button>
+                        <div>
+                            Make list public
+                        </div>
+                        <input type="checkbox"
+                            id={`public--${list.id}`}
+                            checked={list.public}
+                            onClick={(evt) => { }}
+                            readOnly />
                     </div>
                 </section>
             </React.Fragment>
