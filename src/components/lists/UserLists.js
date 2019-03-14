@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 
-import ListManager from "../../modules/resourceManagers/ListManager"
+// import ListManager from "../../modules/resourceManagers/ListManager"
+
 
 import "./Lists.css"
 import ListCard from './ListCard';
 
 import NewListModal from '../modal/NewListModal'
 // import DeleteConfirmModal from '../modal/DeleteConfirmModal'
+import EditListModal from "../modal/EditListModal"
 
 
 
@@ -19,14 +21,14 @@ class UserLists extends Component {
         const stateToChange = this.state
         stateToChange.modalValues[evt.target.id] = evt.target.value;
         this.setState(stateToChange);
-      }
+    }
 
     displayNewListModal = () => {
         const newState = {}
 
         let modalContent = <NewListModal
-        handleFieldChange={this.handleFieldChange}
-        postNewList={this.postNewList}/>
+            handleFieldChange={this.handleFieldChange}
+            postNewList={this.postNewList} />
 
         newState.modalContent = modalContent
         this.setState(newState)
@@ -42,12 +44,23 @@ class UserLists extends Component {
             public: false,
             groupId: 0
         }
-        return ListManager.POST(listObj)
-        .then((r)=> {
-            console.log(r)
-            return r
-        })
-        .then(()=> this.props.history.push(""))
+
+        let newState = {}
+        let modalContent = <EditListModal
+        listObj = {listObj} />
+
+        newState.modalContent = modalContent
+        this.setState(newState)
+        // return ListManager.POST(listObj)
+        //     .then((r) => {
+        //         let newState = {}
+        //         let modalContent = < EditListModal
+        //             listObj={r} />
+
+        //         newState.modalContent = modalContent
+        //         this.setState(newState)
+        //     })
+        // .then(()=> this.props.history.push(""))
     }
 
     displayDeleteConfirmModal = () => {
@@ -73,7 +86,7 @@ class UserLists extends Component {
                                     usersListItems={this.props.usersListItems}
                                     list={list}
                                     changeItemStatus={this.props.changeItemStatus}
-                                    displayDeleteConfirmModal={this.displayDeleteConfirmModal}/>
+                                    displayDeleteConfirmModal={this.displayDeleteConfirmModal} />
                             )
                         }
                     </section>

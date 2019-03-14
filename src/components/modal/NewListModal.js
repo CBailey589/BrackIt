@@ -4,7 +4,7 @@ class NewListModal extends Component {
     render() {
         return (
             <React.Fragment>
-                <form className="NewListForm">
+                <div className="NewListForm">
                     <div className="">
                         <label htmlFor="listName">List name</label>
                         <input
@@ -31,7 +31,7 @@ class NewListModal extends Component {
                         onClick={() => this.props.postNewList()}>
                         click it
                     </button>
-                </form>
+                </div>
             </React.Fragment >
         )
 
