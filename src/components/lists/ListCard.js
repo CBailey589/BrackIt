@@ -52,7 +52,8 @@ class ListCard extends Component {
                         This list is {privacySetting}
                     </div>
                     <div>
-                        <button className="">
+                        <button className=""
+                        onClick={() => this.props.displayDeleteConfirmModal()}>
                             Delete
                         </button>
                         <div>
