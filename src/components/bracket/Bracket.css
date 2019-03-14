@@ -9,7 +9,7 @@
 } */
 
 .BracketSquareContainer {
-    background-color: rgb(238, 238, 238);
+    background-color: rgb(235, 235, 235);
     border: 2px solid orange;
     display: flex;
     /* width: 3300px;
@@ -54,6 +54,6 @@
     color: orange;
     font-size: .8em;
     font-weight: bolder;
-    height: 18px;
-    width: 18px;
+    height: 20px;
+    width: 20px;
 }

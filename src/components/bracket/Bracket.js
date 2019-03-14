@@ -27,20 +27,27 @@ class Bracket extends Component {
         let newState = {}
         newState.bracketObj = this.state.bracketObj
 
+        let id = evt.target.id.split("-")
+        let round = parseInt(id[0])
+        let row = parseInt(id[1])
+        let col = parseInt(id[2])
+
         let multiplier = 0
         if (num === 1) {
             multiplier = -1
         } else if (num === 2) {
             multiplier = 1
         } else {
-            let rand = Math.round(Math.random())
-            rand === 0 ? multiplier = 1 : multiplier = -1
+            let choice1Weight = this.state.bracketObj.AddressesWithItems[document.querySelector(`div[id^="${`${col}${row - 1 * (Math.pow(2, (round - 1)))}`}"]`).id.split("--")[1]].itemWeight || 0
+            let choice2Weight = this.state.bracketObj.AddressesWithItems[document.querySelector(`div[id^="${`${col}${row + 1 * (Math.pow(2, (round - 1)))}`}"]`).id.split("--")[1]].itemWeight || 0
+
+            if ((choice1Weight * Math.random()) > (choice2Weight * Math.random())) {
+                multiplier = -1
+            } else {
+                multiplier = 1
+            }
         }
 
-        let id = evt.target.id.split("-")
-        let round = parseInt(id[0])
-        let row = parseInt(id[1])
-        let col = parseInt(id[2])
 
         let idToFind = `${col}${row + multiplier * (Math.pow(2, (round - 1)))}`
         let squareWithItem = document.querySelector(`div[id^="${idToFind}"]`)
@@ -65,19 +72,25 @@ class Bracket extends Component {
         let newState = {}
         newState.bracketObj = this.state.bracketObj
 
+        let id = evt.target.id.split("-")
+        let col = parseInt(id[2])
+        let row = parseInt(id[1])
+
         let modifier = 0
         if (num === 1) {
             modifier = -1
         } else if (num === 2) {
             modifier = 1
         } else {
-            let rand = Math.round(Math.random())
-            rand === 0 ? modifier = 1 : modifier = -1
-        }
+            let choice1Weight = this.state.bracketObj.AddressesWithItems[document.querySelector(`div[id^="${`${col - 1}${row - 1}`}"]`).id.split("--")[1]].itemWeight || 0
+            let choice2Weight = this.state.bracketObj.AddressesWithItems[document.querySelector(`div[id^="${`${col + 1}${row - 1}`}"]`).id.split("--")[1]].itemWeight || 0
 
-        let id = evt.target.id.split("-")
-        let col = parseInt(id[2])
-        let row = parseInt(id[1])
+            if ((choice1Weight * Math.random()) > (choice2Weight * Math.random())) {
+                modifier = -1
+            } else {
+                modifier = 1
+            }
+        }
 
         let idToFind = `${col + modifier}${row - 1}`
         let squareWithItem = document.querySelector(`div[id^="${idToFind}"]`)
