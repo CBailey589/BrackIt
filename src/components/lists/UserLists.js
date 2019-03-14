@@ -3,39 +3,52 @@ import React, { Component } from 'react'
 import "./Lists.css"
 import ListCard from './ListCard';
 
-import NewListModal from '../../modules/modalViews/NewListModal'
-import DeleteConfirmModal from '../../modules/modalViews/DeleteConfirmModal'
+import NewListModal from '../modal/NewListModal'
+import DeleteConfirmModal from '../modal/DeleteConfirmModal'
 
 
 
 class UserLists extends Component {
     state = {
-        modalContent: []
+        modalContent: [],
+        modalValues: {}
     }
+
+    handleFieldChange = evt => {
+        const stateToChange = this.state
+        stateToChange.modalValues[evt.target.id] = evt.target.value;
+        this.setState(stateToChange);
+      }
 
     displayNewListModal = () => {
         const newState = {}
 
-        let modalContent = NewListModal()
+        let modalContent = <NewListModal
+        handleFieldChange={this.handleFieldChange}
+        postNewList={this.postNewList}/>
+
         newState.modalContent = modalContent
         this.setState(newState)
+    }
+
+    postNewList = () => {
+
     }
 
     displayDeleteConfirmModal = () => {
         const newState = {}
 
-        let modalContent = DeleteConfirmModal()
-        newState.modalContent = modalContent
-        this.setState(newState)
     }
 
     render() {
+        let usersGroups = this.props.usersGroups
+        let groupNames = this.props.groupNames
         return (
             <React.Fragment>
                 <section>
                     <div className="">
                         <button
-                            onClick={() => this.displayNewListModal()}>
+                            onClick={() => this.displayNewListModal(usersGroups, groupNames)}>
                             Make New List Button
                     </button>
                     </div>

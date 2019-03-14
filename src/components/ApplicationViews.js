@@ -54,7 +54,9 @@ class ApplicationViews extends Component {
                     return <UserLists
                         usersLists={this.state.usersLists}
                         usersListItems={this.state.usersListItems}
-                        changeItemStatus={this.changeItemStatus} />
+                        changeItemStatus={this.changeItemStatus}
+                        usersGroups={this.state.usersGroups}
+                        groupNames={this.state.groupNames} />
                 }} />
                 <Route exact path="/bracket/:listId(\d+)" render={(props) => {
                     return <Bracket
