@@ -51,7 +51,8 @@ class UserLists extends Component {
 
         let modalContent = <EditListModal
             listObj={listObj}
-            clearModal={this.clearModal} />
+            clearModal={this.clearModal}
+            usersListItems={this.props.usersListItems} />
 
         newState.modalContent = modalContent
         this.setState(newState)
