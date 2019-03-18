@@ -7,8 +7,8 @@ import "./Lists.css"
 import ListCard from './ListCard';
 
 import NewListModal from '../modal/NewListModal'
-// import DeleteConfirmModal from '../modal/DeleteConfirmModal'
-import EditListModal from "../modal/EditListModal"
+import DeleteConfirmModal from '../modal/DeleteConfirmModal'
+// import EditListModal from "../modal/EditListModal"
 
 
 
@@ -17,54 +17,33 @@ class UserLists extends Component {
         modalContent: []
     }
 
-    handleFieldChange = evt => {
-        const stateToChange = this.state
-        stateToChange.modalValues[evt.target.id] = evt.target.value;
-        this.setState(stateToChange);
+    clearModal = () => {
+        const newState = this.state
+        newState.modalContent = []
+        this.setState(newState)
     }
 
     displayNewListModal = () => {
         const newState = {}
 
         let modalContent = <NewListModal
-            handleFieldChange={this.handleFieldChange}
-            postNewList={this.postNewList} />
+            clearModal={this.clearModal}
+            postNewList={this.props.postNewList} />
 
         newState.modalContent = modalContent
         this.setState(newState)
     }
 
-    postNewList = () => {
-        const listObj = {
-            userId: parseInt(sessionStorage.getItem("BrackItId")),
-            listName: document.querySelector("#listName").value,
-            listCategory: document.querySelector("#listCategory").value,
-            listCreatedDateTime: Date.now(),
-            listLastUsed: Date.now(),
-            public: false,
-            groupId: 0
-        }
+    displayDeleteConfirmModal = (listObj) => {
+        const newState = {}
 
-        let newState = {}
-        let modalContent = <EditListModal
-        listObj = {listObj} />
+        let modalContent = <DeleteConfirmModal
+            listObj={listObj}
+            clearModal={this.clearModal}
+            deleteList={this.props.deleteList} />
 
         newState.modalContent = modalContent
         this.setState(newState)
-        // return ListManager.POST(listObj)
-        //     .then((r) => {
-        //         let newState = {}
-        //         let modalContent = < EditListModal
-        //             listObj={r} />
-
-        //         newState.modalContent = modalContent
-        //         this.setState(newState)
-        //     })
-        // .then(()=> this.props.history.push(""))
-    }
-
-    displayDeleteConfirmModal = () => {
-
     }
 
     render() {

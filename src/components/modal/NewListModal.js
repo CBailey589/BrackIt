@@ -28,7 +28,9 @@ class NewListModal extends Component {
                         />
                     </div>
                     <button
-                        onClick={() => this.props.postNewList()}>
+                        onClick={() => {
+                            this.props.clearModal()
+                            this.props.postNewList()}}>
                         click it
                     </button>
                 </div>

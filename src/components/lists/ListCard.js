@@ -39,7 +39,8 @@ class ListCard extends Component {
                         }
                     </div>
                     <div className="">
-                        <button className="">
+                        <button className=""
+                        id={`edit--${list.id}`}>
                             Edit List
                         </button>
                         <Link className="nav-link" to={`/bracket/${list.id}`}>
@@ -53,7 +54,8 @@ class ListCard extends Component {
                     </div>
                     <div>
                         <button className=""
-                        onClick={() => this.props.displayDeleteConfirmModal()}>
+                        id={`delete--${list.id}`}
+                        onClick={() => this.props.displayDeleteConfirmModal(list)}>
                             Delete
                         </button>
                         <div>
