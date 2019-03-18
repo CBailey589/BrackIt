@@ -46,7 +46,6 @@ class ApplicationViews extends Component {
                 newState.usersLists = shortenedArray
                 this.setState(newState)
         })
-
         // let promise = null
 
         // try {

@@ -8,7 +8,7 @@ import ListCard from './ListCard';
 
 import NewListModal from '../modal/NewListModal'
 import DeleteConfirmModal from '../modal/DeleteConfirmModal'
-// import EditListModal from "../modal/EditListModal"
+import EditListModal from "../modal/EditListModal"
 
 
 
@@ -46,6 +46,17 @@ class UserLists extends Component {
         this.setState(newState)
     }
 
+    displayEditListModal = (listObj) => {
+        const newState = {}
+
+        let modalContent = <EditListModal
+            listObj={listObj}
+            clearModal={this.clearModal} />
+
+        newState.modalContent = modalContent
+        this.setState(newState)
+    }
+
     render() {
         let usersGroups = this.props.usersGroups
         let groupNames = this.props.groupNames
@@ -65,7 +76,8 @@ class UserLists extends Component {
                                     usersListItems={this.props.usersListItems}
                                     list={list}
                                     changeItemStatus={this.props.changeItemStatus}
-                                    displayDeleteConfirmModal={this.displayDeleteConfirmModal} />
+                                    displayDeleteConfirmModal={this.displayDeleteConfirmModal}
+                                    displayEditListModal={this.displayEditListModal} />
                             )
                         }
                     </section>

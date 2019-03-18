@@ -40,7 +40,8 @@ class ListCard extends Component {
                     </div>
                     <div className="">
                         <button className=""
-                        id={`edit--${list.id}`}>
+                        id={`edit--${list.id}`}
+                        onClick={() => this.props.displayEditListModal(list)}>
                             Edit List
                         </button>
                         <Link className="nav-link" to={`/bracket/${list.id}`}>
