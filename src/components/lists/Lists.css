@@ -28,3 +28,7 @@
     align-items: center;
 
 }
+
+.Modal {
+    border: 2px solid blueviolet
+}

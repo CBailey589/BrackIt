@@ -52,7 +52,7 @@ export default Object.create(null, {
     CUSTOMSEARCH: {
         value: function (searchString) {
             return fetch(`${Settings.url}/${this.DBarray}${searchString}`)
-            .then(r => r.json())
+                .then(r => r.json())
         }
     },
     GETALLBYUSER: {
