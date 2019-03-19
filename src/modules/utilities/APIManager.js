@@ -43,6 +43,17 @@ export default Object.create(null, {
             }).then(r => r.json());
         }
     },
+    PATCH: {
+        value: function (id, key, value) {
+            return fetch(`${Settings.url}/${this.DBarray}/${id}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({[key]: value})
+            }).then(r => r.json())
+    }
+},
     MATCHLIKE: {
         value: function (arrayKey, searchVal) {
             return fetch(`${Settings.url}/${this.DBarray}?${arrayKey}_like=${searchVal}`)

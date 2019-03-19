@@ -65,7 +65,9 @@ class ListCard extends Component {
                         <input type="checkbox"
                             id={`public--${list.id}`}
                             checked={list.public}
-                            onClick={(evt) => { }}
+                            onClick={(evt) => {
+                                this.props.changeListPrivacySetting(evt)
+                             }}
                             readOnly />
                     </div>
                 </section>
