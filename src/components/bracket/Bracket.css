@@ -12,8 +12,8 @@
     background-color: rgb(235, 235, 235);
     border: 2px solid orange;
     display: flex;
-    /* width: 3300px;
-    height: 2550px; */
+    width: 100%;
+    height: 70%;
     overflow: scroll;
     flex-flow: row wrap;
 }
