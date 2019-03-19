@@ -1,5 +1,21 @@
 .NavBar {
-    border: 2px solid purple
+    border: 2px solid purple;
+    display: flex;
+    flex-direction: row;
+}
+
+.NavBarLogo {
+    border: 1px solid green;
+    display: flex;
+    min-height: 100%;
+    width: 40%;
+}
+
+.HeaderWelcome {
+    border: 1px solid blue;
+    display: flex;
+    min-height: 100%;
+    width: 30%;
 }
 
 .NavItem {
