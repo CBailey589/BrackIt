@@ -37,11 +37,11 @@ class EditListModal extends Component {
                                     {item.itemText}
                                 </div>
                                 <button
-                                id={`remove--${item.id}`}
-                                onClick={(evt)=> {
-                                    this.props.removeListItem(item)
-                                }}>
-                                remove
+                                    id={`remove--${item.id}`}
+                                    onClick={(evt) => {
+                                        this.props.removeListItem(item)
+                                    }}>
+                                    remove
                                 </button>
                             </section>
                         )
@@ -66,12 +66,16 @@ class EditListModal extends Component {
                                 userId: listObj.userId
                             }
                             this.props.addNewListItem(itemObj)
-                            document.querySelector("#itemText").value=""
+                            document.querySelector("#itemText").value = ""
                         }}>
                         Add
                     </button>
                 </div>
-                <button>Save</button>
+                <button
+                    id={`update--${listObj.id}`}
+                    >
+                    Save
+                </button>
                 <button>Discard</button>
 
 

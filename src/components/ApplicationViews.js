@@ -34,6 +34,7 @@ class ApplicationViews extends Component {
             .then(newListObj => {
                 const newState = this.state
                 newState.usersLists.push(newListObj)
+                newState.globalLists.push(newListObj)
                 this.setState(newState)
             })
     }
@@ -67,6 +68,7 @@ class ApplicationViews extends Component {
             .then(postedObj => {
                 let newState = this.state
                 newState.usersListItems.push(postedObj)
+                newState.globalListItems.push(postedObj)
                 this.setState(newState)
             })
     }
@@ -76,8 +78,14 @@ class ApplicationViews extends Component {
         return ListItemsManager.DELETE(item.id)
             .then(() => ListItemsManager.CUSTOMSEARCH(`?userId=${userId}`))
                 .then(json => newState.usersListItems = json)
+                .then(ListItemsManager.GETALL())
+                .then(json => newState.globalListItems = json)
                 .then(()=> this.setState(newState))
                 .then(() => document.querySelector(`#edit--${item.listId}`).click())
+    }
+
+    updateList = (obj) => {
+
     }
 
     componentDidMount() {
