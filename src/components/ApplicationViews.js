@@ -27,26 +27,25 @@ class ApplicationViews extends Component {
             listCreatedDateTime: Date.now(),
             listLastUsed: Date.now(),
             public: false,
-            groupId: null
         }
 
         return ListManager.POST(listObj)
             .then(newListObj => {
                 const newState = this.state
                 newState.usersLists.push(newListObj)
+                newState.globalLists.push(newListObj)
                 this.setState(newState)
             })
     }
 
     deleteList = (listId) => {
         return ListManager.DELETE(listId)
-        .then(()=> {
-            const newState = this.state
+            .then(() => {
+                const newState = this.state
                 let shortenedArray = newState.usersLists.filter(list => list.id !== listId)
                 newState.usersLists = shortenedArray
                 this.setState(newState)
-        })
-
+            })
         // let promise = null
 
         // try {
@@ -61,6 +60,37 @@ class ApplicationViews extends Component {
         //     console.log(error)
         // }
         // return promise
+    }
+
+    addNewListItem = (itemObj) => {
+        return ListItemsManager.POST(itemObj)
+            .then(postedObj => {
+                let newState = this.state
+                newState.usersListItems.push(postedObj)
+                newState.globalListItems.push(postedObj)
+                this.setState(newState)
+            })
+    }
+    removeListItem = (item) => {
+        let newState = this.state
+        let userId = parseInt(sessionStorage.getItem("BrackItId"))
+        return ListItemsManager.DELETE(item.id)
+            .then(() => ListItemsManager.CUSTOMSEARCH(`?userId=${userId}`))
+            .then(json => newState.usersListItems = json)
+            .then(() => ListItemsManager.GETALL())
+            .then(json => newState.globalListItems = json)
+            .then(() => this.setState(newState))
+            .then(() => document.querySelector(`#edit--${item.listId}`).click())
+    }
+
+    updateList = (listObj) => {
+        let newState = this.state
+        return ListManager.PUT(listObj)
+            .then(() => UserManager.CUSTOMSEARCH(`?id=${listObj.userId}&_embed=lists`))
+            .then(json => newState.usersLists = json[0].lists)
+            .then(() => ListManager.GETALL())
+            .then(json => newState.globalLists = json)
+            .then(() => this.setState(newState))
     }
 
     componentDidMount() {
@@ -90,6 +120,7 @@ class ApplicationViews extends Component {
         this.setState(newState)
     }
 
+
     render() {
         return (
             <React.Fragment>
@@ -103,7 +134,10 @@ class ApplicationViews extends Component {
                         groupNames={this.state.groupNames}
 
                         postNewList={this.postNewList}
-                        deleteList={this.deleteList} />
+                        deleteList={this.deleteList}
+                        addNewListItem={this.addNewListItem}
+                        removeListItem={this.removeListItem}
+                        updateList={this.updateList} />
                 }} />
                 <Route exact path="/bracket/:listId(\d+)" render={(props) => {
                     return <Bracket

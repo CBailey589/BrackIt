@@ -18,7 +18,7 @@ export default Object.create(null, {
             return fetch(`${Settings.url}/${this.DBarray}/${id}`,
                 {
                     method: "DELETE"
-                })
+                }).then(r => r.json())
         }
     },
     POST: {
