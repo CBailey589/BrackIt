@@ -50,7 +50,9 @@ class ListCard extends Component {
                                     BrackIt
                             </button>
                             </Link>
-                            : ""
+                            : <div>
+                                Must have at least 3 items
+                             </div>
                         }
                     </div>
                     <div className="ListFooter">
