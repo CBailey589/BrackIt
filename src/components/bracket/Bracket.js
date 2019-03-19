@@ -116,6 +116,8 @@ class Bracket extends Component {
             bracketInfo = SendItemsToAddresses(bracketInfo)
             newState.bracketObj = MakeRangeArrays(bracketInfo)
             this.setState(newState)
+        } else {
+            this.props.history.push("/")
         }
     }
 
