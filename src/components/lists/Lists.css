@@ -3,6 +3,20 @@
     flex-flow: row wrap;
 }
 
+.ListSectionHeader {
+    border: 1px solid red;
+    display: flex;
+    width: 100%;
+}
+
+.ListCardHolder {
+    border: 1px solid blue;
+    display: flex;
+    width: 100%;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
 .ListCard {
     border: 2px solid green;
     display: flex;

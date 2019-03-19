@@ -3,9 +3,10 @@
 }
 .BracketView {
     border: 2px solid darkcyan;
+    /* display: flex; */
     overflow: scroll;
     width: 96%;
-
+    height: 80vh;
 }
 
 .BracketSquareContainer {

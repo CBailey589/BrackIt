@@ -67,14 +67,14 @@ class UserLists extends Component {
         let groupNames = this.props.groupNames
         return (
             <React.Fragment>
-                <section>
-                    <div className="">
+                <section className="ListSection">
+                    <div className="ListSectionHeader">
                         <button
                             onClick={() => this.displayNewListModal(usersGroups, groupNames)}>
                             Make New List Button
-                    </button>
+                        </button>
                     </div>
-                    <section className="">
+                    <section className="ListCardHolder">
                         {
                             this.props.usersLists.map(list =>
                                 <ListCard key={`list--${list.id}`}
