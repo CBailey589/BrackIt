@@ -1,6 +1,23 @@
 import React, { Component } from 'react'
 
 class EditListModal extends Component {
+    state = {
+        listName: "",
+        listCategory: ""
+    }
+
+    handleFieldChange = evt => {
+        const stateToChange = {}
+        stateToChange[evt.target.id] = evt.target.value
+        this.setState(stateToChange)
+    }
+
+    componentDidMount() {
+        const newState= this.state
+        newState.listName = this.props.listObj.listName
+        newState.listCategory = this.props.listObj.listCategory
+        this.setState(newState)
+    }
 
     render() {
         let listObj = this.props.listObj
@@ -15,7 +32,8 @@ class EditListModal extends Component {
                         required
                         className="form-control"
                         id="listName"
-                        placeholder={`${listObj.listName}`}
+                        value={`${this.state.listName}`}
+                        onChange={this.handleFieldChange}
                     />
                 </div>
                 <div className="">
@@ -25,7 +43,8 @@ class EditListModal extends Component {
                         required
                         className="form-control"
                         id="listCategory"
-                        placeholder={`${listObj.listCategory}`}
+                        value={`${this.state.listCategory}`}
+                        onChange={this.handleFieldChange}
                     />
                 </div>
                 <div className="ListItems">
@@ -73,7 +92,19 @@ class EditListModal extends Component {
                 </div>
                 <button
                     id={`update--${listObj.id}`}
-                    >
+                    onClick={() => {
+                        const updatedListObj = {
+                            id: listObj.id,
+                            userId: parseInt(sessionStorage.getItem("BrackItId")),
+                            listName: this.state.listName,
+                            listCategory: this.state.listCategory,
+                            listCreatedDateTime: listObj.listCreatedDateTime,
+                            listLastUsed: Date.now(),
+                            public: listObj.public,
+                        }
+                        this.props.updateList(updatedListObj)
+                        this.props.clearModal()
+                    }}>
                     Save
                 </button>
                 <button>Discard</button>

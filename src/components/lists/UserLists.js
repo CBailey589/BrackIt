@@ -54,7 +54,8 @@ class UserLists extends Component {
             clearModal={this.clearModal}
             usersListItems={this.props.usersListItems}
             addNewListItem={this.props.addNewListItem}
-            removeListItem={this.props.removeListItem} />
+            removeListItem={this.props.removeListItem}
+            updateList={this.props.updateList} />
 
         newState.modalContent = modalContent
         this.setState(newState)
