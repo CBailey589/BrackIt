@@ -1,21 +1,10 @@
 import React, { Component } from 'react'
 
-class NewListModal extends Component {
-    state = {
-        listItems: []
-    }
-
-    componentDidMount() {
-        const newState = {}
-        let listObj = this.props.listObj
-        let listItems = this.props.usersListItems.filter(item => item.listId === listObj.id)
-        newState.listItems = listItems
-        this.setState(newState)
-
-    }
+class EditListModal extends Component {
 
     render() {
         let listObj = this.props.listObj
+        let listItems = this.props.usersListItems.filter(item => item.listId === listObj.id)
 
         return (
             <React.Fragment>
@@ -41,13 +30,19 @@ class NewListModal extends Component {
                 </div>
                 <div className="ListItems">
                     {
-                        this.state.listItems.map((item, index) =>
+                        listItems.map((item, index) =>
                             <section key={`itemSection--${index + 1}`}
                                 className="ItemSection">
                                 <div key={`item--${index + 1}`}>
                                     {item.itemText}
                                 </div>
-                                <button>remove</button>
+                                <button
+                                id={`remove--${item.id}`}
+                                onClick={(evt)=> {
+                                    this.props.removeListItem(item)
+                                }}>
+                                remove
+                                </button>
                             </section>
                         )
                     }
@@ -71,10 +66,7 @@ class NewListModal extends Component {
                                 userId: listObj.userId
                             }
                             this.props.addNewListItem(itemObj)
-                            let newState = this.state
-                            newState.listItems.push(itemObj)
-                            this.setState(newState)
-                            document.querySelector("#itemText").value = ""
+                            document.querySelector("#itemText").value=""
                         }}>
                         Add
                     </button>
@@ -98,4 +90,4 @@ class NewListModal extends Component {
 }
 
 
-export default NewListModal
+export default EditListModal

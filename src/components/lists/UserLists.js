@@ -60,6 +60,7 @@ class UserLists extends Component {
         this.setState(newState)
     }
 
+
     render() {
         let usersGroups = this.props.usersGroups
         let groupNames = this.props.groupNames

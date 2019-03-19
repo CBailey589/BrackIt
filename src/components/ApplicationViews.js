@@ -40,12 +40,12 @@ class ApplicationViews extends Component {
 
     deleteList = (listId) => {
         return ListManager.DELETE(listId)
-        .then(()=> {
-            const newState = this.state
+            .then(() => {
+                const newState = this.state
                 let shortenedArray = newState.usersLists.filter(list => list.id !== listId)
                 newState.usersLists = shortenedArray
                 this.setState(newState)
-        })
+            })
         // let promise = null
 
         // try {
@@ -64,9 +64,20 @@ class ApplicationViews extends Component {
 
     addNewListItem = (itemObj) => {
         return ListItemsManager.POST(itemObj)
+            .then(postedObj => {
+                let newState = this.state
+                newState.usersListItems.push(postedObj)
+                this.setState(newState)
+            })
     }
-    removeListItem = (itemId) => {
-        return ListManager.DELETE(itemId)
+    removeListItem = (item) => {
+        let newState = this.state
+        let userId = parseInt(sessionStorage.getItem("BrackItId"))
+        return ListItemsManager.DELETE(item.id)
+            .then(() => ListItemsManager.CUSTOMSEARCH(`?userId=${userId}`))
+                .then(json => newState.usersListItems = json)
+                .then(()=> this.setState(newState))
+                .then(() => document.querySelector(`#edit--${item.listId}`).click())
     }
 
     componentDidMount() {
