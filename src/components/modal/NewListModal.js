@@ -17,14 +17,14 @@ class NewListModal extends Component {
                         />
                     </div>
                     <div className="">
-                        <label htmlFor="listCategory">List Category</label>
+                        <label htmlFor="listCategory">List category</label>
                         <input
                             type="text"
                             required
                             className="form-control"
                             onChange={this.handleFieldChange}
                             id="listCategory"
-                            placeholder="List name"
+                            placeholder="List category"
                         />
                     </div>
                     <button

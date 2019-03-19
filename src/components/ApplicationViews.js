@@ -116,7 +116,6 @@ class ApplicationViews extends Component {
     }
 
     changeListPrivacySetting =(evt) => {
-        // debugger
         let newState = this.state
         const checkboxId = parseInt(evt.target.id.split("--")[1])
         let userId = parseInt(sessionStorage.getItem("BrackItId"))
