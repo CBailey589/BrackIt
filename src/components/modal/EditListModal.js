@@ -3,13 +3,20 @@ import React, { Component } from 'react'
 class EditListModal extends Component {
     state = {
         listName: "",
-        listCategory: ""
+        listCategory: "",
+        itemText: ""
     }
 
     handleFieldChange = evt => {
-        const stateToChange = {}
-        stateToChange[evt.target.id] = evt.target.value
-        this.setState(stateToChange)
+        if (evt.target.id === "itemText" && evt.target.value.length <= 27) {
+            const newState = this.state
+            newState[evt.target.id] = evt.target.value
+            this.setState(newState)
+        } else if (evt.target.id !== "itemText") {
+            const newState = this.state
+            newState[evt.target.id] = evt.target.value
+            this.setState(newState)
+        }
     }
 
     componentDidMount() {
@@ -57,7 +64,7 @@ class EditListModal extends Component {
                                 </div>
                                 <button
                                     id={`remove--${item.id}`}
-                                    onClick={(evt) => {
+                                    onClick={() => {
                                         this.props.removeListItem(item)
                                     }}>
                                     remove
@@ -74,11 +81,15 @@ class EditListModal extends Component {
                         className="form-control"
                         id="itemText"
                         placeholder="enter item here"
+                        onChange={this.handleFieldChange}
                     />
+                    <div>
+                        {28 - this.state.itemText.length}/28 characters remaining
+                    </div>
                     <button
                         onClick={() => {
                             let itemObj = {
-                                itemText: document.querySelector("#itemText").value,
+                                itemText: this.state.itemText,
                                 listId: listObj.id,
                                 itemActive: true,
                                 itemWeight: 0.5,
@@ -105,14 +116,8 @@ class EditListModal extends Component {
                         this.props.updateList(updatedListObj)
                         this.props.clearModal()
                     }}>
-                    Save
+                    Save Edits
                 </button>
-                <button>Discard</button>
-
-
-
-
-
             </React.Fragment >
         )
 

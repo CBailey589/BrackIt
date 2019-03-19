@@ -30,9 +30,15 @@ class NewListModal extends Component {
                     <button
                         onClick={() => {
                             this.props.clearModal()
-                            this.props.postNewList()}}>
+                            this.props.postNewList()
+                        }}>
                         click it
                     </button>
+                    <button
+                        onClick={() => this.props.clearModal()}>
+                        Cancel
+                    </button>
+
                 </div>
             </React.Fragment >
         )
