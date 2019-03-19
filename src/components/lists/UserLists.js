@@ -82,7 +82,8 @@ class UserLists extends Component {
                                     list={list}
                                     changeItemStatus={this.props.changeItemStatus}
                                     displayDeleteConfirmModal={this.displayDeleteConfirmModal}
-                                    displayEditListModal={this.displayEditListModal} />
+                                    displayEditListModal={this.displayEditListModal}
+                                    changeListPrivacySetting={this.props.changeListPrivacySetting} />
                             )
                         }
                     </section>

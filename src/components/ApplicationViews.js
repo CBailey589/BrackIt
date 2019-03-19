@@ -93,6 +93,52 @@ class ApplicationViews extends Component {
             .then(() => this.setState(newState))
     }
 
+
+    changeItemStatus = (evt) => {
+        let newState = this.state
+        const checkboxId = parseInt(evt.target.id.split("--")[1])
+        let userId = parseInt(sessionStorage.getItem("BrackItId"))
+        if (evt.target.checked) {
+            ListItemsManager.PATCH(checkboxId, "itemActive", true)
+            .then(() => ListItemsManager.CUSTOMSEARCH(`?userId=${userId}`))
+            .then(json => newState.usersListItems = json)
+            .then(() => ListItemsManager.GETALL())
+            .then(json => newState.globalListItems = json)
+            .then(() => this.setState(newState))
+        } else {
+            ListItemsManager.PATCH(checkboxId, "itemActive", false)
+            .then(() => ListItemsManager.CUSTOMSEARCH(`?userId=${userId}`))
+            .then(json => newState.usersListItems = json)
+            .then(() => ListItemsManager.GETALL())
+            .then(json => newState.globalListItems = json)
+            .then(() => this.setState(newState))
+        }
+    }
+
+    changeListPrivacySetting =(evt) => {
+        // debugger
+        let newState = this.state
+        const checkboxId = parseInt(evt.target.id.split("--")[1])
+        let userId = parseInt(sessionStorage.getItem("BrackItId"))
+        if (evt.target.checked) {
+            ListManager.PATCH(checkboxId, "public", true)
+            .then(() => UserManager.CUSTOMSEARCH(`?id=${userId}&_embed=lists`))
+            .then(json => newState.usersLists = json[0].lists)
+            .then(() => ListManager.GETALL())
+            .then(json => newState.globalLists = json)
+            .then(() => this.setState(newState))
+
+        } else {
+            ListManager.PATCH(checkboxId, "public", false)
+            .then(() => UserManager.CUSTOMSEARCH(`?id=${userId}&_embed=lists`))
+            .then(json => newState.usersLists = json[0].lists)
+            .then(() => ListManager.GETALL())
+            .then(json => newState.globalLists = json)
+            .then(() => this.setState(newState))
+        }
+    }
+
+
     componentDidMount() {
         const newState = {}
 
@@ -106,20 +152,6 @@ class ApplicationViews extends Component {
         Promise.all([prom1, prom2, prom4, prom5, prom6])
             .then(() => this.setState(newState))
     }
-
-    changeItemStatus = (evt) => {
-        let newState = this.state
-        const checkboxId = parseInt(evt.target.id.split("--")[1])
-        if (evt.target.checked) {
-            newState.usersListItems.find(item => item.id === checkboxId).itemActive = true
-            newState.globalListItems.find(item => item.id === checkboxId).itemActive = true
-        } else {
-            newState.usersListItems.find(item => item.id === checkboxId).itemActive = false
-            newState.globalListItems.find(item => item.id === checkboxId).itemActive = false
-        }
-        this.setState(newState)
-    }
-
 
     render() {
         return (
@@ -137,7 +169,8 @@ class ApplicationViews extends Component {
                         deleteList={this.deleteList}
                         addNewListItem={this.addNewListItem}
                         removeListItem={this.removeListItem}
-                        updateList={this.updateList} />
+                        updateList={this.updateList}
+                        changeListPrivacySetting={this.changeListPrivacySetting} />
                 }} />
                 <Route exact path="/bracket/:listId(\d+)" render={(props) => {
                     return <Bracket
