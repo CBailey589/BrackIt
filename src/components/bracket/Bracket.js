@@ -124,8 +124,8 @@ class Bracket extends Component {
     render() {
         let rowIdxs = this.state.bracketObj.rowIdxs
         let colIdxs = this.state.bracketObj.colIdxs
-        let containerHeight = (this.state.bracketObj.rows * 20) + 10
-        let containerWidth = (this.state.bracketObj.columns * 150) + 20
+        let containerHeight = (this.state.bracketObj.rows * 20)
+        let containerWidth = (this.state.bracketObj.columns * 150)
         return (
             <React.Fragment>
                 <section className="BracketView">
