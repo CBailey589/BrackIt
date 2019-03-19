@@ -70,6 +70,7 @@ class NewListModal extends Component {
                                 itemWeight: 0.5,
                                 userId: listObj.userId
                             }
+                            this.props.addNewListItem(itemObj)
                             let newState = this.state
                             newState.listItems.push(itemObj)
                             this.setState(newState)

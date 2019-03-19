@@ -62,6 +62,13 @@ class ApplicationViews extends Component {
         // return promise
     }
 
+    addNewListItem = (itemObj) => {
+        return ListItemsManager.POST(itemObj)
+    }
+    removeListItem = (itemId) => {
+        return ListManager.DELETE(itemId)
+    }
+
     componentDidMount() {
         const newState = {}
 
@@ -89,6 +96,7 @@ class ApplicationViews extends Component {
         this.setState(newState)
     }
 
+
     render() {
         return (
             <React.Fragment>
@@ -102,7 +110,9 @@ class ApplicationViews extends Component {
                         groupNames={this.state.groupNames}
 
                         postNewList={this.postNewList}
-                        deleteList={this.deleteList} />
+                        deleteList={this.deleteList}
+                        addNewListItem={this.addNewListItem}
+                        removeListItem={this.removeListItem} />
                 }} />
                 <Route exact path="/bracket/:listId(\d+)" render={(props) => {
                     return <Bracket
