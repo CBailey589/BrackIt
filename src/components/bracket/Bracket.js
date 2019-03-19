@@ -103,10 +103,13 @@ class Bracket extends Component {
     }
 
     componentDidMount() {
+        debugger
         const newState = {}
 
+        console.log(this.props.match.params.listId)
         const list = this.props.globalLists.find(list =>
             list.id === parseInt(this.props.match.params.listId)) || { id: 404, name: "No List Found " }
+        console.log(list)
         const items = this.props.globalListItems.filter(item => item.listId === list.id)
         const preparedArray = PrepareBracketList(items)
         if (preparedArray.length > 0) {

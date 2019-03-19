@@ -40,23 +40,26 @@ class ListCard extends Component {
                     </div>
                     <div className="">
                         <button className=""
-                        id={`edit--${list.id}`}
-                        onClick={() => this.props.displayEditListModal(list)}>
+                            id={`edit--${list.id}`}
+                            onClick={() => this.props.displayEditListModal(list)}>
                             Edit List
                         </button>
-                        <Link className="nav-link" to={`/bracket/${list.id}`}>
-                            <button className="BrackItButton">
-                                BrackIt
+                        {listItems.length >= 3
+                            ? <Link className="nav-link" to={`/bracket/${list.id}`}>
+                                <button className="BrackItButton">
+                                    BrackIt
                             </button>
-                        </Link>
+                            </Link>
+                            : ""
+                        }
                     </div>
                     <div className="ListFooter">
                         This list is {privacySetting}
                     </div>
                     <div>
                         <button className=""
-                        id={`delete--${list.id}`}
-                        onClick={() => this.props.displayDeleteConfirmModal(list)}>
+                            id={`delete--${list.id}`}
+                            onClick={() => this.props.displayDeleteConfirmModal(list)}>
                             Delete
                         </button>
                         <div>
@@ -67,7 +70,7 @@ class ListCard extends Component {
                             checked={list.public}
                             onClick={(evt) => {
                                 this.props.changeListPrivacySetting(evt)
-                             }}
+                            }}
                             readOnly />
                     </div>
                 </section>
