@@ -1,8 +1,9 @@
 .Footer {
     /* border: 2px solid yellow; */
-    background-color: #00007F;
+    background-color: #0021A5;
+    color: white;
     width: 100vw;
-    height: 8vh;
+    height: 6vh;
     box-sizing: border-box;
     position: fixed;
     bottom: 0;

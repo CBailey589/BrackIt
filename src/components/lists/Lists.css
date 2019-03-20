@@ -4,11 +4,11 @@
     flex-flow: row wrap;
     position: fixed;
     right: 0;
-    bottom: 8vh;
+    bottom: 6vh;
     overflow-y: scroll;
     overflow-x: hidden;
     width: 85vw;
-    height: 72vh;
+    height: 74vh;
     box-sizing: border-box;
 }
 
@@ -20,9 +20,10 @@
     width: 100%;
     height: 15%;
 }
+
 .ListSectionHeader button {
     border-radius: 15px 30px;
-    background-color: #002CFF;
+    background-color: #0021A5;
     color: #FF9D00;
     height: 80%;
     width: 200px;
@@ -36,21 +37,73 @@
     justify-content: space-evenly;
 }
 
-.ListCardOuterBorder{
+.ListCardOuterBorder {
     margin: 10px;
     padding: 10px;
     box-sizing: border-box;
     border: 10px solid #FF9D00;
     border-radius: 10px;
-    box-shadow: inset 10px 10px 15px -6px #002CFF;
+    box-shadow: inset 10px 10px 15px -6px #001B9C;
+    background-color: #FAFAFA;
+    position: relative;
+}
+
+.ListCardOuterBorder:after {
+    z-index: -1;
+    position: absolute;
+    content: "";
+    bottom: 0px;
+    right: -5px;
+    left: auto;
+    width: 100%;
+    top: 80%;
+    max-width: 300px;
+    background: #777;
+    -webkit-box-shadow: 0 15px 10px #001B9C;
+    -moz-box-shadow: 0 15px 10px #001B9C;
+    box-shadow: 0 15px 10px #001B9C;
+    -webkit-transform: rotate(3deg);
+    -moz-transform: rotate(3deg);
+    -o-transform: rotate(3deg);
+    -ms-transform: rotate(3deg);
+    transform: rotate(3deg);
 }
 
 .ListCard {
     /* border: 2px solid green; */
+    background-color: #FAFAFA;
     display: flex;
     flex-direction: column;
-    height: 400px;
+    align-items: center;
+    height: 500px;
     width: 270px;
+}
+
+.ListName {
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    font-size: 1.5em;
+    color: #0021A5;
+    text-decoration: underline double;
+    margin-bottom: 5px;
+}
+.ListCatAndNum {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: row;
+    width: 270px;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 5px;
+}
+.ListCategory {
+    font-size: 1.2em
+}
+.ListNumber {
+    font-size: .8em
 }
 
 .ListItems {
@@ -68,9 +121,11 @@
     min-height: 20px;
     justify-content: space-between;
     align-items: center;
-
 }
 
 .Modal {
-    border: 2px solid blueviolet
+    border: 2px solid blueviolet;
+    background-color: red;
+    z-index: 1;
+    position: fixed
 }

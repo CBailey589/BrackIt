@@ -6,10 +6,10 @@
     /* display: flex; */
     position: fixed;
     right: 0;
-    bottom: 8vh;
+    bottom: 6vh;
     overflow: scroll;
     width: 85vw;
-    height: 72vh;
+    height: 74vh;
     box-sizing: border-box;
 }
 
