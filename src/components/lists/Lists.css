@@ -127,7 +127,18 @@
     width: 260px;
     overflow-y: scroll;
 }
+/* Scroll Bars */
+.ListItems::-webkit-scrollbar {
+    width: 10px;
+}
 
+.ListItems::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 15px #FF9D00;
+    background-color: #FAFAFA
+}
+
+/* Items & Checkboxes */
 .ItemSection {
     /* border: 1px dotted gold; */
     color: #F2F2F2;
@@ -137,7 +148,7 @@
     max-height: 40px;
     justify-content: space-between;
     align-items: flex-end;
-    margin: -6px 0px;
+    margin: -7px 7px -7px 0px;
     padding: 5px;
     /* box-sizing: border-box; */
 }
@@ -203,6 +214,8 @@
     -ms-transform: rotate(35deg);
     transform: rotate(35deg);
 }
+
+
 
 
 
