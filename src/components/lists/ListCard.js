@@ -17,8 +17,8 @@ class ListCard extends Component {
                     <div className="ListHeader">
                         <h1 className="ListName">{list.listName}</h1>
                         <div className="ListCatAndNum">
-                            <div className="ListCategory">Category: {list.listCategory}</div>
-                            <div className="ListNumber">List #: {list.id}</div>
+                            <div className="ListCategory"><b>Category: </b>{list.listCategory}</div>
+                            <div className="ListNumber"><b>List #: </b>{list.id}</div>
                         </div>
                     </div>
                     <div className="ListItems">

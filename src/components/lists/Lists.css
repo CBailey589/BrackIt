@@ -84,11 +84,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    font-size: 1.5em;
+    width: 270px;
+    font-size: 24px;
+    font-weight: bolder;
     color: #0021A5;
     text-decoration: underline double;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 .ListCatAndNum {
     /* border: 1px solid red; */
@@ -97,30 +98,40 @@
     width: 270px;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 .ListCategory {
-    font-size: 1.2em
+    font-size: 20px;
+    color: #0021A5;
+
 }
 .ListNumber {
-    font-size: .8em
+    font-size: .8em;
+    color: #0021A5;
 }
 
 .ListItems {
-    border: 1px dotted green;
+    border: 3px solid #FF9D00;
+    background-color: #0021A5;
+    border-radius: 3px;
     display: flex;
     flex-direction: column;
     height: 200px;
+    width: 260px;
     overflow-y: scroll;
 }
 
 .ItemSection {
-    background-color: pink;
-    border: 1px dotted gold;
+    /* border: 1px dotted gold; */
+    color: #F2F2F2;
+    font-size: 17px;
     display: flex;
     min-height: 20px;
     justify-content: space-between;
     align-items: center;
+    margin: 3px 0px;
+    padding: 2px;
+    box-sizing: border-box;
 }
 
 .Modal {
