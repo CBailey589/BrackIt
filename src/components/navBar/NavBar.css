@@ -2,6 +2,8 @@
     border: 2px solid purple;
     display: flex;
     flex-direction: row;
+    height: 20vh;
+    box-sizing: border-box;
 }
 
 .NavBarLogo {

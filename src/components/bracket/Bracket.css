@@ -4,9 +4,13 @@
 .BracketView {
     border: 2px solid darkcyan;
     /* display: flex; */
+    position: fixed;
+    right: 0;
+    bottom: 8vh;
     overflow: scroll;
-    width: 96%;
-    height: 80vh;
+    width: 85vw;
+    height: 72vh;
+    box-sizing: border-box;
 }
 
 .BracketSquareContainer {
@@ -16,12 +20,13 @@
     width: 100%;
     height: 70%;
     flex-flow: row wrap;
+    justify-self: center;
 }
 
 .BracketSquare {
     /* border: 1px dotted blue; */
     display: flex;
-    height: 20px;
+    height: 25px;
     width: 150px;
     box-sizing: border-box;
     justify-content: center;
@@ -31,15 +36,20 @@
 
 .HoldsItem {
     border-bottom: 3px solid black;
+    box-shadow: 0 2px 0 orange;
 }
 
 .InsideLeft {
     border-right: 3px solid black;
+    box-shadow: 2px 0 orange;
 }
 
 .InsideRight {
-    border-left: 3px solid black;
+    border-left: 3px groove black;
+    box-shadow: -2px 0 orange;
+
 }
+
 
 /* .ButtonSquare {
     background-color: yellow;
