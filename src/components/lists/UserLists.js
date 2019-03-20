@@ -71,19 +71,21 @@ class UserLists extends Component {
                     <div className="ListSectionHeader">
                         <button
                             onClick={() => this.displayNewListModal(usersGroups, groupNames)}>
-                            Make New List Button
+                            Create a new list
                         </button>
                     </div>
                     <section className="ListCardHolder">
                         {
                             this.props.usersLists.map(list =>
-                                <ListCard key={`list--${list.id}`}
-                                    usersListItems={this.props.usersListItems}
-                                    list={list}
-                                    changeItemStatus={this.props.changeItemStatus}
-                                    displayDeleteConfirmModal={this.displayDeleteConfirmModal}
-                                    displayEditListModal={this.displayEditListModal}
-                                    changeListPrivacySetting={this.props.changeListPrivacySetting} />
+                                <div className="ListCardOuterBorder" key={`OuterBorder--${list.id}`}>
+                                    <ListCard key={`list--${list.id}`}
+                                        usersListItems={this.props.usersListItems}
+                                        list={list}
+                                        changeItemStatus={this.props.changeItemStatus}
+                                        displayDeleteConfirmModal={this.displayDeleteConfirmModal}
+                                        displayEditListModal={this.displayEditListModal}
+                                        changeListPrivacySetting={this.props.changeListPrivacySetting} />
+                                </div>
                             )
                         }
                     </section>

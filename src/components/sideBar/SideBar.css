@@ -1,0 +1,10 @@
+.SideBar{
+    /* border: 2px solid green; */
+    background-color: #00007F;
+    width: 15vw;
+    height: 72vh;
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 8vh;
+    left: 0;
+}

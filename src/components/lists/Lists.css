@@ -1,12 +1,31 @@
 .ListSection {
+    background-color: #FAFAFA;
     display: flex;
     flex-flow: row wrap;
+    position: fixed;
+    right: 0;
+    bottom: 8vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 85vw;
+    height: 72vh;
+    box-sizing: border-box;
 }
 
 .ListSectionHeader {
     border: 1px solid red;
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    height: 15%;
+}
+.ListSectionHeader button {
+    border-radius: 15px 30px;
+    background-color: #002CFF;
+    color: #FF9D00;
+    height: 80%;
+    width: 200px;
 }
 
 .ListCardHolder {
@@ -17,12 +36,21 @@
     justify-content: space-evenly;
 }
 
+.ListCardOuterBorder{
+    margin: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 10px solid #FF9D00;
+    border-radius: 10px;
+    box-shadow: inset 10px 10px 15px -6px #002CFF;
+}
+
 .ListCard {
-    border: 2px solid green;
+    /* border: 2px solid green; */
     display: flex;
     flex-direction: column;
     height: 400px;
-    width: 300px
+    width: 270px;
 }
 
 .ListItems {
