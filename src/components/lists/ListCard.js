@@ -29,11 +29,14 @@ class ListCard extends Component {
                                     <div key={`item--${index + 1}`}>
                                         {item.itemText}
                                     </div>
-                                    <input type="checkbox"
-                                        id={`checkbox--${item.id}`}
-                                        checked={item.itemActive}
-                                        onClick={(evt) => this.props.changeItemStatus(evt)}
-                                        readOnly />
+                                    <div className="CheckboxContainer">
+                                        <input type="checkbox"
+                                            id={`checkbox--${item.id}`}
+                                            checked={item.itemActive}
+                                            onClick={(evt) => this.props.changeItemStatus(evt)}
+                                            readOnly />
+                                        <div className="Checkmark"></div>
+                                    </div>
                                 </section>
                             )
                         }

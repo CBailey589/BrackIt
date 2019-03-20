@@ -91,6 +91,7 @@
     text-decoration: underline double;
     margin-bottom: 10px;
 }
+
 .ListCatAndNum {
     /* border: 1px solid red; */
     display: flex;
@@ -100,16 +101,22 @@
     align-items: flex-end;
     margin-bottom: 10px;
 }
+
 .ListCategory {
     font-size: 20px;
     color: #0021A5;
-
 }
+
 .ListNumber {
     font-size: .8em;
     color: #0021A5;
 }
 
+
+
+
+
+/* EVERYTHING INSIDE OF LIST ITEMS INCLUDING STYLED CHECKBOXES AND SCROLL BARS*/
 .ListItems {
     border: 3px solid #FF9D00;
     background-color: #0021A5;
@@ -126,13 +133,81 @@
     color: #F2F2F2;
     font-size: 17px;
     display: flex;
-    min-height: 20px;
+    min-height: 40px;
+    max-height: 40px;
     justify-content: space-between;
-    align-items: center;
-    margin: 3px 0px;
-    padding: 2px;
-    box-sizing: border-box;
+    align-items: flex-end;
+    margin: -6px 0px;
+    padding: 5px;
+    /* box-sizing: border-box; */
 }
+
+.CheckboxContainer {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 15px;
+    height: 100%;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.CheckboxContainer input {
+    z-index: 1;
+    position: relative;
+    top: 20px;
+    left: 2px;
+    /* comment out opacity to see checkboxes */
+    opacity: 0;
+    cursor: pointer;
+    height: 20px;
+    width: 15px;
+}
+
+.Checkmark {
+    height: 15px;
+    width: 15px;
+    border: 2px solid #FF9D00;
+}
+
+.CheckboxContainer:hover input~.Checkmark {
+    background-color: #FF9D00;
+}
+
+.CheckboxContainer input:checked~.Checkmark {
+    border: 2px solid #FF9D00;
+}
+
+.Checkmark:after {
+    content: "";
+    display: none;
+}
+
+.CheckboxContainer input:checked~.Checkmark:after {
+    display: block;
+}
+
+.CheckboxContainer .Checkmark:after {
+    position: relative;
+    left: 0px;
+    top: -5px;
+    width: 7px;
+    height: 15px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(35deg);
+    -ms-transform: rotate(35deg);
+    transform: rotate(35deg);
+}
+
+
+
+
+
 
 .Modal {
     border: 2px solid blueviolet;
