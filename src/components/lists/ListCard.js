@@ -41,7 +41,7 @@ class ListCard extends Component {
                             )
                         }
                     </div>
-                    <div className="">
+                    <div className="CardButtons">
                         <button className=""
                             id={`edit--${list.id}`}
                             onClick={() => this.props.displayEditListModal(list)}>
@@ -53,30 +53,35 @@ class ListCard extends Component {
                                     BrackIt
                             </button>
                             </Link>
-                            : <div>
-                                Must have at least 3 items
-                             </div>
+                            : <div className="BrackitWarning">
+                                <b>*Must have at least <br />3 items to BrackIt!</b>
+                            </div>
                         }
                     </div>
                     <div className="ListFooter">
-                        This list is {privacySetting}
-                    </div>
-                    <div>
-                        <button className=""
+                        <div className="PrivacySetting">
+                            This list is {privacySetting}
+                        </div>
+                        <button className="ListDeleteButton"
                             id={`delete--${list.id}`}
                             onClick={() => this.props.displayDeleteConfirmModal(list)}>
                             Delete
                         </button>
-                        <div>
-                            Make list public
+                        <div className="PrivacyCheckboxContainer">
+                            <div className="PrivacyCheckboxLabel">
+                                Make list public
+                            </div>
+                            <div className="PrivacyCheckbox">
+                                <input type="checkbox"
+                                    id={`public--${list.id}`}
+                                    checked={list.public}
+                                    onClick={(evt) => {
+                                        this.props.changeListPrivacySetting(evt)
+                                    }}
+                                    readOnly />
+                                <div></div>
+                            </div>
                         </div>
-                        <input type="checkbox"
-                            id={`public--${list.id}`}
-                            checked={list.public}
-                            onClick={(evt) => {
-                                this.props.changeListPrivacySetting(evt)
-                            }}
-                            readOnly />
                     </div>
                 </section>
             </React.Fragment>

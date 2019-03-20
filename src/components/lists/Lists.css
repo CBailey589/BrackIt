@@ -13,7 +13,7 @@
 }
 
 .ListSectionHeader {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,12 +25,15 @@
     border-radius: 15px 30px;
     background-color: #0021A5;
     color: #FF9D00;
-    height: 80%;
-    width: 200px;
+    border: 1px solid #FF9D00;
+    height: 70%;
+    width: 250px;
+    font-weight: bolder;
+    font-size: 24px;
 }
 
 .ListCardHolder {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     display: flex;
     width: 100%;
     flex-flow: row wrap;
@@ -38,12 +41,12 @@
 }
 
 .ListCardOuterBorder {
-    margin: 10px;
+    margin: 40px 20px;
     padding: 10px;
     box-sizing: border-box;
     border: 10px solid #FF9D00;
     border-radius: 10px;
-    box-shadow: inset 10px 10px 15px -6px #001B9C;
+    box-shadow: inset 2px 2px 10px 3px #001B9C;
     background-color: #FAFAFA;
     position: relative;
 }
@@ -75,7 +78,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 500px;
+    height: 440px;
     width: 270px;
 }
 
@@ -108,13 +111,9 @@
 }
 
 .ListNumber {
-    font-size: .8em;
+    font-size: 14px;
     color: #0021A5;
 }
-
-
-
-
 
 /* EVERYTHING INSIDE OF LIST ITEMS INCLUDING STYLED CHECKBOXES AND SCROLL BARS*/
 .ListItems {
@@ -126,6 +125,7 @@
     height: 200px;
     width: 260px;
     overflow-y: scroll;
+    margin-bottom: 10px;
 }
 /* Scroll Bars */
 .ListItems::-webkit-scrollbar {
@@ -214,10 +214,70 @@
     -ms-transform: rotate(35deg);
     transform: rotate(35deg);
 }
+/* End of List Items Scrollbars and Checkboxes  */
 
+.CardButtons {
+    /* border: 2px solid purple; */
+    width: 270px;
+    height: 30px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 50px;
+}
 
+.CardButtons button {
+    font-size: 20px;
+    width: 100px;
+    height: 30px;
+    margin-left: 10px;
+    border-radius: 10px 20px;
+    background-color: #0021A5;
+    color: #FF9D00;
+    border: 1px solid #FF9D00;
+}
 
+.BrackitWarning {
+    margin-left: 10px;
+    font-size: 12px;
+    color: #0021A5;
+}
 
+.ListFooter {
+    /* border: 1px solid pink; */
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.PrivacySetting {
+    width: 100%;
+    font-size: 14px;
+    color: #0021A5;
+    font-weight: bolder;
+    margin-bottom: 5px;
+}
+
+.ListDeleteButton{
+    width: 30%;
+    border-radius: 10px 20px;
+    background-color: #FF9D00;
+    border: 1px solid #FF9D00;
+    font-size: 14px;
+    color: #0021A5;
+    font-weight: bolder;
+}
+
+.PrivacyCheckboxContainer {
+display: flex;
+width: 50%;
+justify-content: space-between;
+}
+
+.PrivacyCheckboxLabel{
+    font-size: 14px;
+    color: #0021A5;
+    font-weight: bolder;
+}
 
 
 
