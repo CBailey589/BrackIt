@@ -6,10 +6,10 @@
     /* display: flex; */
     position: fixed;
     right: 0;
-    bottom: 6vh;
+    bottom: 4vh;
     overflow: scroll;
     width: 85vw;
-    height: 74vh;
+    height: 76vh;
     box-sizing: border-box;
 }
 
@@ -35,18 +35,21 @@
 }
 
 .HoldsItem {
+    /* background-color: yellow; */
     border-bottom: 3px solid black;
-    box-shadow: 0 2px 0 orange;
+    /* box-shadow: 0 2px 0 orange; */
 }
 
 .InsideLeft {
+    /* background-color: red; */
     border-right: 3px solid black;
-    box-shadow: 2px 0 orange;
+    /* box-shadow: 2px 0 orange; */
 }
 
 .InsideRight {
+    /* background-color: green; */
     border-left: 3px groove black;
-    box-shadow: -2px 0 orange;
+    /* box-shadow: -2px 0 orange; */
 
 }
 

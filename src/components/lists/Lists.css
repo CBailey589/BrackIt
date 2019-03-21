@@ -4,11 +4,11 @@
     flex-flow: row wrap;
     position: fixed;
     right: 0;
-    bottom: 6vh;
+    bottom: 4vh;
     overflow-y: scroll;
     overflow-x: hidden;
     width: 85vw;
-    height: 74vh;
+    height: 76vh;
     box-sizing: border-box;
 }
 
@@ -65,11 +65,11 @@
     -webkit-box-shadow: 0 15px 10px #001B9C;
     -moz-box-shadow: 0 15px 10px #001B9C;
     box-shadow: 0 15px 10px #001B9C;
-    -webkit-transform: rotate(3deg);
-    -moz-transform: rotate(3deg);
-    -o-transform: rotate(3deg);
-    -ms-transform: rotate(3deg);
-    transform: rotate(3deg);
+    -webkit-transform: rotate(2deg);
+    -moz-transform: rotate(2deg);
+    -o-transform: rotate(2deg);
+    -ms-transform: rotate(2deg);
+    transform: rotate(2deg);
 }
 
 .ListCard {
@@ -283,8 +283,9 @@ justify-content: space-between;
 
 
 .Modal {
-    border: 2px solid blueviolet;
+    /* border: 2px solid blueviolet */
     background-color: red;
     z-index: 1;
-    position: fixed
+    position: fixed;
+    left: 40vw;
 }
