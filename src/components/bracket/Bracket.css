@@ -9,7 +9,7 @@
     right: 0;
     bottom: 4vh;
     overflow: scroll;
-    width: 85vw;
+    width: 88vw;
     height: 76vh;
     box-sizing: border-box;
 }
@@ -38,7 +38,7 @@
     box-sizing: border-box;
     justify-content: center;
     align-items: flex-end;
-    font-size: 0.7em;
+    /* font-size: 0.7em; */
 }
 
 .HoldsItem {
@@ -72,6 +72,8 @@
     color: orange;
     font-size: .8em;
     font-weight: bolder;
-    height: 20px;
-    width: 20px;
+    /* height: 20px;
+    width: 20px; */
+    height: 0px;
+    width: 0px;
 }

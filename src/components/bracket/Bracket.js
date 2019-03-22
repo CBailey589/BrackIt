@@ -140,11 +140,11 @@ class Bracket extends Component {
         let scale = this.state.squareScale
         if (evt.deltaY < 0) {
             // Zoom in
-            scale += evt.deltaY * -.001;
+            scale += evt.deltaY * -.005;
         }
         else {
             // Zoom out
-            scale -= evt.deltaY * .001;
+            scale -= evt.deltaY * .005;
         }
         // Restrict scale to between 1 and 8
         scale = Math.min(Math.max(1, scale), 8);

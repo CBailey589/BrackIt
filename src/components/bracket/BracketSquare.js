@@ -6,6 +6,7 @@ import ConvertColumnToRound from "../../modules/bracket/ConvertColumnToRound"
 class BracketSqaure extends Component {
     render() {
         const bracketObj = this.props.bracketObj
+        const rounds = bracketObj.rounds
         const numRows = bracketObj.rows
         const numCols = bracketObj.columns
         const squareScale = this.props.squareScale
@@ -21,7 +22,11 @@ class BracketSqaure extends Component {
                 <div
                     className={`${classList}`}
                     id={`${col}${row}--${squareInfo.itemKey}`}
-                    style={{ height: `${vh / numRows * squareScale}px`, width: `${vw / numCols * squareScale}px` }}
+                    style={{
+                        height: `${vh / numRows * squareScale}px`,
+                        width: `${vw / numCols * squareScale}px`,
+                        fontSize: `${18 / rounds + (squareScale * 4.5) + (round * 2)}px`
+                    }}
                 >
                     {squareInfo.itemText}
                     {
@@ -85,7 +90,7 @@ class BracketSqaure extends Component {
                             : null
                     }
                 </div>
-            </React.Fragment>
+            </React.Fragment >
         )
     }
 }
