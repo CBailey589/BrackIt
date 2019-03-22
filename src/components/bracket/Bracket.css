@@ -42,6 +42,7 @@
 .HoldsItem {
     /* background-color: yellow; */
     border-bottom: 3px solid black;
+    cursor: pointer;
     /* box-shadow: 0 2px 0 orange; */
 }
 

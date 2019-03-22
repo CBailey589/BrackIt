@@ -32,22 +32,21 @@ class Bracket extends Component {
         vh: 0
     }
 
-    advanceItemToNextRound = (num, evt) => {
-        // debugger
+    advanceItemToNextRound = (evt) => {
+        debugger
         let newState = {}
         newState.bracketObj = this.state.bracketObj
+        let multiplier
+        let round
+        let row
+        let col
 
-        let id = evt.target.id.split("-")
-        let round = parseInt(id[0])
-        let row = parseInt(id[1])
-        let col = parseInt(id[2])
+        if (evt.target.id.includes("L") === false && evt.target.id.includes("R") === false) {
+            let id = evt.target.id.split("-")
+            round = parseInt(id[0])
+            row = parseInt(id[1])
+            col = parseInt(id[2])
 
-        let multiplier = 0
-        if (num === 1) {
-            multiplier = -1
-        } else if (num === 2) {
-            multiplier = 1
-        } else {
             let choice1Weight = this.state.bracketObj.AddressesWithItems[document.querySelector(`div[id^="${`${col}-${row - 1 * (Math.pow(2, (round - 1)))}`}"]`).id.split("--")[1]].itemWeight || 0
             let choice2Weight = this.state.bracketObj.AddressesWithItems[document.querySelector(`div[id^="${`${col}-${row + 1 * (Math.pow(2, (round - 1)))}`}"]`).id.split("--")[1]].itemWeight || 0
 
@@ -56,6 +55,12 @@ class Bracket extends Component {
             } else {
                 multiplier = 1
             }
+        } else {
+            let id = evt.target.id.split("--")[0].split("-")
+            round = parseInt(id[2])
+            row = parseInt(id[1])
+            col = parseInt(id[0])
+            multiplier = 0
         }
 
 

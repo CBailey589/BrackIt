@@ -21,7 +21,7 @@ class BracketSqaure extends Component {
             <React.Fragment>
                 <div
                     className={`${classList}`}
-                    id={`${col}-${row}--${squareInfo.itemKey}`}
+                    id={`${col}-${row}-${round}--${squareInfo.itemKey}`}
                     style={{
                         height: `${vh / numRows * squareScale}px`,
                         width: `${vw / numCols * squareScale}px`,
@@ -29,17 +29,19 @@ class BracketSqaure extends Component {
                         // fontSize: `${18 / rounds + (squareScale * 4.5) + (round * 2)}px`
                         fontSize: `${3 + (squareScale ** 2) + (round * 2)}px`
                     }}
+                    onClick={(evt) => {
+                        try { this.props.advanceItemToNextRound(evt) }
+                        catch (error) {}
+                    }}
                 >
-                    <div className="SquareText">
-                        {squareInfo.itemText}
-                    </div>
+                    {squareInfo.itemText}
                     {
                         (classList.includes("ButtonSquare"))
                             ? <div className="ButtonDiv">
                                 <div key={`${round}-${row}-${col}-Below`}
                                     id={`${round}-${row}-${col}`}
                                     onClick={(evt) => {
-                                        this.props.advanceItemToNextRound(3, evt)
+                                        this.props.advanceItemToNextRound(evt)
                                     }}
                                     style={{
                                         height: `${(1 * (squareScale + 1)) + (round * 3)}px`,
