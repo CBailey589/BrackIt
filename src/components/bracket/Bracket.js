@@ -33,6 +33,7 @@ class Bracket extends Component {
     }
 
     advanceItemToNextRound = (num, evt) => {
+        // debugger
         let newState = {}
         newState.bracketObj = this.state.bracketObj
 
@@ -47,8 +48,8 @@ class Bracket extends Component {
         } else if (num === 2) {
             multiplier = 1
         } else {
-            let choice1Weight = this.state.bracketObj.AddressesWithItems[document.querySelector(`div[id^="${`${col}${row - 1 * (Math.pow(2, (round - 1)))}`}"]`).id.split("--")[1]].itemWeight || 0
-            let choice2Weight = this.state.bracketObj.AddressesWithItems[document.querySelector(`div[id^="${`${col}${row + 1 * (Math.pow(2, (round - 1)))}`}"]`).id.split("--")[1]].itemWeight || 0
+            let choice1Weight = this.state.bracketObj.AddressesWithItems[document.querySelector(`div[id^="${`${col}-${row - 1 * (Math.pow(2, (round - 1)))}`}"]`).id.split("--")[1]].itemWeight || 0
+            let choice2Weight = this.state.bracketObj.AddressesWithItems[document.querySelector(`div[id^="${`${col}-${row + 1 * (Math.pow(2, (round - 1)))}`}"]`).id.split("--")[1]].itemWeight || 0
 
             if ((choice1Weight * Math.random()) > (choice2Weight * Math.random())) {
                 multiplier = -1
@@ -58,7 +59,7 @@ class Bracket extends Component {
         }
 
 
-        let idToFind = `${col}${row + multiplier * (Math.pow(2, (round - 1)))}`
+        let idToFind = `${col}-${row + multiplier * (Math.pow(2, (round - 1)))}`
         let squareWithItem = document.querySelector(`div[id^="${idToFind}"]`)
 
         let addressToAdvanceFrom = squareWithItem.id.split("--")[1]
@@ -149,7 +150,6 @@ class Bracket extends Component {
         // Restrict scale to between 1 and 8
         scale = Math.min(Math.max(1, scale), 8);
         this.setState({ squareScale: scale })
-        console.log(scale)
     }
 
     render() {
