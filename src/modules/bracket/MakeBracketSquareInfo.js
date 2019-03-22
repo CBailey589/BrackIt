@@ -50,12 +50,6 @@ function MakeBracketSquareInfo(col, row, bracketObj) {
         }
     }
 
-
-
-
-
-
-
     //Check to see if button should be in square
     if (firstLastCol === false && row % inOut === 0 && (row / inOut) % 2 !== 0) {
         squareInfo.button = true

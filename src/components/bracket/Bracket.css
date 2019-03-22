@@ -1,6 +1,7 @@
-*{
+* {
     margin: 0px;
 }
+
 .BracketView {
     border: 2px solid darkcyan;
     /* display: flex; */
@@ -21,6 +22,12 @@
     height: 70%;
     flex-flow: row wrap;
     justify-self: center;
+    cursor: grab;
+    position: relative;
+}
+
+.active {
+    cursor: grabbing;
 }
 
 .BracketSquare {
@@ -50,9 +57,7 @@
     /* background-color: green; */
     border-left: 3px groove black;
     /* box-shadow: -2px 0 orange; */
-
 }
-
 
 /* .ButtonSquare {
     background-color: yellow;

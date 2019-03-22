@@ -19,8 +19,14 @@ class Bracket extends Component {
             columnInfo: [],
             rounds: 0,
             rowIdxs: [],
-            colIdxs: []
-        }
+            colIdxs: [],
+            zoomScale: 1
+        },
+        isDown: false,
+        startX: 0,
+        startY: 0,
+        scrollLeft: 0,
+        scrollTop: 0
     }
 
     advanceItemToNextRound = (num, evt) => {
@@ -121,7 +127,10 @@ class Bracket extends Component {
         }
     }
 
-    
+    setBracketScale = (evt) => {
+        evt.preventDefault()
+        console.log(evt)
+    }
 
     render() {
         let rowIdxs = this.state.bracketObj.rowIdxs
@@ -132,10 +141,43 @@ class Bracket extends Component {
             <React.Fragment>
                 <section className="BracketView">
                     <section className="BracketSquareContainer"
-                    onWheel={(evt) => {
-                        console.log(evt)
-                    }}
-                    style={{ height: `${containerHeight}px`, width: `${containerWidth}px` }}
+                        onWheel={(evt) => { this.setBracketScale(evt) }}
+
+                        // Dragging for bracket area starts here:
+                        onMouseDown={(evt) => {
+                            document.querySelector(".BracketSquareContainer").classList.add("active")
+                            this.setState({
+                                isDown: true,
+                                startX: evt.pageX - document.querySelector(".BracketView").offsetLeft,
+                                startY: evt.pageY - document.querySelector(".BracketView").offsetTop,
+                                scrollLeft: document.querySelector(".BracketView").scrollLeft,
+                                scrollTop: document.querySelector(".BracketView").scrollTop
+                            })
+                        }}
+                        onMouseUp={(evt) => {
+                            this.setState({ isDown: false })
+                            document.querySelector(".BracketSquareContainer").classList.remove("active")
+                        }}
+                        onMouseLeave={(evt) => {
+                            this.setState({ isDown: false })
+                            document.querySelector(".BracketSquareContainer").classList.remove("active")
+                        }}
+                        onMouseMove={(evt) => {
+                            if (this.state.isDown === false) {
+                                return
+                            } else {
+                                evt.preventDefault()
+                                const x = evt.pageX - document.querySelector(".BracketView").offsetLeft
+                                const walkX = (x - this.state.startX) * 2
+                                const y = evt.pageY - document.querySelector(".BracketView").offsetTop
+                                const walkY = (y - this.state.startY) * 2
+                                document.querySelector(".BracketView").scrollLeft = this.state.scrollLeft - walkX
+                                document.querySelector(".BracketView").scrollTop = this.state.scrollTop - walkY
+                            }
+                        }}
+                        // Dragging for bracket area ends here.
+
+                        style={{ height: `${containerHeight}px`, width: `${containerWidth}px` }}
                     >
                         {
                             rowIdxs.map(row =>
