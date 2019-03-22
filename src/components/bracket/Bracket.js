@@ -26,7 +26,10 @@ class Bracket extends Component {
         startX: 0,
         startY: 0,
         scrollLeft: 0,
-        scrollTop: 0
+        scrollTop: 0,
+        squareScale: 1,
+        vw: 0,
+        vh: 0
     }
 
     advanceItemToNextRound = (num, evt) => {
@@ -121,6 +124,11 @@ class Bracket extends Component {
             bracketInfo = SplitItemsToRegions(preparedArray, bracketInfo)
             bracketInfo = SendItemsToAddresses(bracketInfo)
             newState.bracketObj = MakeRangeArrays(bracketInfo)
+
+            newState.vw = document.querySelector(".BracketView").clientWidth
+            newState.vh = document.querySelector(".BracketView").clientHeight
+
+
             this.setState(newState)
         } else {
             this.props.history.push("/")
@@ -129,14 +137,24 @@ class Bracket extends Component {
 
     setBracketScale = (evt) => {
         evt.preventDefault()
-        console.log(evt)
+        let scale = this.state.squareScale
+        if (evt.deltaY < 0) {
+            // Zoom in
+            scale += evt.deltaY * -.001;
+        }
+        else {
+            // Zoom out
+            scale -= evt.deltaY * .001;
+        }
+        // Restrict scale to between 1 and 8
+        scale = Math.min(Math.max(1, scale), 8);
+        this.setState({ squareScale: scale })
+        console.log(scale)
     }
 
     render() {
         let rowIdxs = this.state.bracketObj.rowIdxs
         let colIdxs = this.state.bracketObj.colIdxs
-        let containerHeight = (this.state.bracketObj.rows * 25)
-        let containerWidth = (this.state.bracketObj.columns * 150)
         return (
             <React.Fragment>
                 <section className="BracketView">
@@ -168,16 +186,16 @@ class Bracket extends Component {
                             } else {
                                 evt.preventDefault()
                                 const x = evt.pageX - document.querySelector(".BracketView").offsetLeft
-                                const walkX = (x - this.state.startX) * 2
+                                const walkX = (x - this.state.startX) * 2.5
                                 const y = evt.pageY - document.querySelector(".BracketView").offsetTop
-                                const walkY = (y - this.state.startY) * 2
+                                const walkY = (y - this.state.startY) * 2.5
                                 document.querySelector(".BracketView").scrollLeft = this.state.scrollLeft - walkX
                                 document.querySelector(".BracketView").scrollTop = this.state.scrollTop - walkY
                             }
                         }}
                         // Dragging for bracket area ends here.
 
-                        style={{ height: `${containerHeight}px`, width: `${containerWidth}px` }}
+                        style={{ height: `${this.state.vh * this.state.squareScale}px`, width: `${this.state.vw * this.state.squareScale}px` }}
                     >
                         {
                             rowIdxs.map(row =>
@@ -187,7 +205,10 @@ class Bracket extends Component {
                                         col={col}
                                         bracketObj={this.state.bracketObj}
                                         advanceItemToNextRound={this.advanceItemToNextRound}
-                                        pickChamp={this.pickChamp} />
+                                        pickChamp={this.pickChamp}
+                                        vh={this.state.vh}
+                                        vw={this.state.vw}
+                                        squareScale={this.state.squareScale} />
                                 ))
                         }
                     </section>
