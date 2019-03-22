@@ -1,7 +1,28 @@
 .NavBar {
-    border: 2px solid purple
+    border: 2px solid black;
+    background-color: #FAFAFA;
+    display: flex;
+    flex-direction: row;
+    height: 20vh;
+    box-sizing: border-box;
+    /* position: fixed;
+    top: 0; */
+}
+
+.NavBarLogo {
+    border: 1px solid green;
+    display: flex;
+    min-height: 100%;
+    width: 40%;
+}
+
+.HeaderWelcome {
+    border: 1px solid blue;
+    display: flex;
+    min-height: 100%;
+    width: 30%;
 }
 
 .NavItem {
-    border: 2px solid lightpink
+    border: 2px solid lightpink;
 }

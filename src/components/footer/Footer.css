@@ -1,0 +1,10 @@
+.Footer {
+    /* border: 2px solid yellow; */
+    background-color: #0021A5;
+    color: white;
+    width: 100vw;
+    height: 4vh;
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+}

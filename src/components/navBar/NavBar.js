@@ -36,8 +36,11 @@ class NavBar extends Component {
 
     render() {
         return (
-            <nav className="NavBar">
-                <div className="">
+            <div className="NavBar">
+                <div className="NavBarLogo">
+                    logo
+                </div>
+                <div className="HeaderWelcome">
                     Welcome {this.props.activeUser.firstName}
                 </div>
                 <ul className="">
@@ -52,7 +55,7 @@ class NavBar extends Component {
                             placeholder="Search..." />
                     </li>
                 </ul>
-            </nav>
+            </div>
         )
     }
 }

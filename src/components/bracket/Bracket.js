@@ -121,15 +121,22 @@ class Bracket extends Component {
         }
     }
 
+    
+
     render() {
         let rowIdxs = this.state.bracketObj.rowIdxs
         let colIdxs = this.state.bracketObj.colIdxs
-        let containerHeight = (this.state.bracketObj.rows * 20)
+        let containerHeight = (this.state.bracketObj.rows * 25)
         let containerWidth = (this.state.bracketObj.columns * 150)
         return (
             <React.Fragment>
                 <section className="BracketView">
-                    <section className="BracketSquareContainer" style={{ height: `${containerHeight}px`, width: `${containerWidth}px` }}>
+                    <section className="BracketSquareContainer"
+                    onWheel={(evt) => {
+                        console.log(evt)
+                    }}
+                    style={{ height: `${containerHeight}px`, width: `${containerWidth}px` }}
+                    >
                         {
                             rowIdxs.map(row =>
                                 colIdxs.map(col =>

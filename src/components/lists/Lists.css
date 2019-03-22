@@ -1,48 +1,291 @@
 .ListSection {
+    background-color: #FAFAFA;
     display: flex;
     flex-flow: row wrap;
+    position: fixed;
+    right: 0;
+    bottom: 4vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 85vw;
+    height: 76vh;
+    box-sizing: border-box;
 }
 
 .ListSectionHeader {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    height: 15%;
+}
+
+.ListSectionHeader button {
+    border-radius: 15px 30px;
+    background-color: #0021A5;
+    color: #FF9D00;
+    border: 1px solid #FF9D00;
+    height: 70%;
+    width: 250px;
+    font-weight: bolder;
+    font-size: 24px;
 }
 
 .ListCardHolder {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     display: flex;
     width: 100%;
     flex-flow: row wrap;
     justify-content: space-evenly;
 }
 
-.ListCard {
-    border: 2px solid green;
-    display: flex;
-    flex-direction: column;
-    height: 400px;
-    width: 300px
+.ListCardOuterBorder {
+    margin: 40px 20px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 10px solid #FF9D00;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 10px 3px #001B9C;
+    background-color: #FAFAFA;
+    position: relative;
 }
 
+.ListCardOuterBorder:after {
+    z-index: -1;
+    position: absolute;
+    content: "";
+    bottom: 0px;
+    right: -5px;
+    left: auto;
+    width: 100%;
+    top: 80%;
+    max-width: 300px;
+    background: #777;
+    -webkit-box-shadow: 0 15px 10px #001B9C;
+    -moz-box-shadow: 0 15px 10px #001B9C;
+    box-shadow: 0 15px 10px #001B9C;
+    -webkit-transform: rotate(2deg);
+    -moz-transform: rotate(2deg);
+    -o-transform: rotate(2deg);
+    -ms-transform: rotate(2deg);
+    transform: rotate(2deg);
+}
+
+.ListCard {
+    /* border: 2px solid green; */
+    background-color: #FAFAFA;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 440px;
+    width: 270px;
+}
+
+.ListName {
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 270px;
+    font-size: 24px;
+    font-weight: bolder;
+    color: #0021A5;
+    text-decoration: underline double;
+    margin-bottom: 10px;
+}
+
+.ListCatAndNum {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: row;
+    width: 270px;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 10px;
+}
+
+.ListCategory {
+    font-size: 20px;
+    color: #0021A5;
+}
+
+.ListNumber {
+    font-size: 14px;
+    color: #0021A5;
+}
+
+/* EVERYTHING INSIDE OF LIST ITEMS INCLUDING STYLED CHECKBOXES AND SCROLL BARS*/
 .ListItems {
-    border: 1px dotted green;
+    border: 3px solid #FF9D00;
+    background-color: #0021A5;
+    border-radius: 3px;
     display: flex;
     flex-direction: column;
     height: 200px;
+    width: 260px;
     overflow-y: scroll;
+    margin-bottom: 10px;
+}
+/* Scroll Bars */
+.ListItems::-webkit-scrollbar {
+    width: 10px;
 }
 
+.ListItems::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 15px #FF9D00;
+    background-color: #FAFAFA
+}
+
+/* Items & Checkboxes */
 .ItemSection {
-    background-color: pink;
-    border: 1px dotted gold;
+    /* border: 1px dotted gold; */
+    color: #F2F2F2;
+    font-size: 17px;
     display: flex;
-    min-height: 20px;
+    min-height: 40px;
+    max-height: 40px;
     justify-content: space-between;
-    align-items: center;
-
+    align-items: flex-end;
+    margin: -7px 7px -7px 0px;
+    padding: 5px;
+    /* box-sizing: border-box; */
 }
+
+.CheckboxContainer {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 15px;
+    height: 100%;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.CheckboxContainer input {
+    z-index: 1;
+    position: relative;
+    top: 20px;
+    left: 2px;
+    /* comment out opacity to see checkboxes */
+    opacity: 0;
+    cursor: pointer;
+    height: 20px;
+    width: 15px;
+}
+
+.Checkmark {
+    height: 15px;
+    width: 15px;
+    border: 2px solid #FF9D00;
+}
+
+.CheckboxContainer:hover input~.Checkmark {
+    background-color: #FF9D00;
+}
+
+.CheckboxContainer input:checked~.Checkmark {
+    border: 2px solid #FF9D00;
+}
+
+.Checkmark:after {
+    content: "";
+    display: none;
+}
+
+.CheckboxContainer input:checked~.Checkmark:after {
+    display: block;
+}
+
+.CheckboxContainer .Checkmark:after {
+    position: relative;
+    left: 0px;
+    top: -5px;
+    width: 7px;
+    height: 15px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(35deg);
+    -ms-transform: rotate(35deg);
+    transform: rotate(35deg);
+}
+/* End of List Items Scrollbars and Checkboxes  */
+
+.CardButtons {
+    /* border: 2px solid purple; */
+    width: 270px;
+    height: 30px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 50px;
+}
+
+.CardButtons button {
+    font-size: 20px;
+    width: 100px;
+    height: 30px;
+    margin-left: 10px;
+    border-radius: 10px 20px;
+    background-color: #0021A5;
+    color: #FF9D00;
+    border: 1px solid #FF9D00;
+}
+
+.BrackitWarning {
+    margin-left: 10px;
+    font-size: 12px;
+    color: #0021A5;
+}
+
+.ListFooter {
+    /* border: 1px solid pink; */
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.PrivacySetting {
+    width: 100%;
+    font-size: 14px;
+    color: #0021A5;
+    font-weight: bolder;
+    margin-bottom: 5px;
+}
+
+.ListDeleteButton{
+    width: 30%;
+    border-radius: 10px 20px;
+    background-color: #FF9D00;
+    border: 1px solid #FF9D00;
+    font-size: 14px;
+    color: #0021A5;
+    font-weight: bolder;
+}
+
+.PrivacyCheckboxContainer {
+display: flex;
+width: 50%;
+justify-content: space-between;
+}
+
+.PrivacyCheckboxLabel{
+    font-size: 14px;
+    color: #0021A5;
+    font-weight: bolder;
+}
+
+
+
 
 .Modal {
-    border: 2px solid blueviolet
+    /* border: 2px solid blueviolet */
+    background-color: red;
+    z-index: 1;
+    position: fixed;
+    left: 40vw;
 }
