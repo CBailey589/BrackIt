@@ -1,6 +1,4 @@
 .BracketView {
-    border: 2px solid darkcyan;
-    /* display: flex; */
     position: fixed;
     right: 0;
     bottom: 4vh;
@@ -8,13 +6,15 @@
     width: 88vw;
     height: 76vh;
     box-sizing: border-box;
-    font-family: IBM Plex Mono;
+    /* font-family: IBM Plex Mono, monospace; */
+    /* font-family: 'Oxygen Mono', monospace; */
+    font-family: 'Nanum Gothic Coding', monospace;
     font-weight: 900;
+    color: #F0F3BD;
 }
 
 .BracketSquareContainer {
-    background-color: rgb(235, 235, 235);
-    border: 2px solid orange;
+    background-color: #05668D;
     display: flex;
     width: 100%;
     height: 70%;
@@ -29,52 +29,72 @@
 }
 
 .BracketSquare {
-    /* border: 1px dotted blue; */
     display: flex;
-    /* height: 25px;
-    width: 150px; */
     box-sizing: border-box;
     justify-content: space-evenly;
     align-items: flex-end;
-    /* font-size: 0.7em; */
 }
 
 .HoldsItem {
-    /* background-color: yellow; */
-    border-bottom: 3px solid black;
     cursor: pointer;
-    /* box-shadow: 0 2px 0 orange; */
 }
 
+/* START OF BRACKET LINE BUILDING: */
+
 .InsideLeft {
-    /* background-color: red; */
-    border-right: 3px solid black;
-    /* box-shadow: 2px 0 orange; */
+    border-right: 3px solid #02C39A;
 }
 
 .InsideRight {
-    /* background-color: green; */
-    border-left: 3px groove black;
-    /* box-shadow: -2px 0 orange; */
+    border-left: 3px solid #02C39A;
 }
 
-/* .ButtonSquare {
-    background-color: yellow;
+.InsideLeftTop {
+    border-top-right-radius: 9px;
+    border-top: 3px solid #02C39A;
+    border-right: 3px solid #02C39A;
+}
+
+.InsideLeftBottom {
+    border-bottom-right-radius: 9px;
+    border-bottom: 3px solid #02C39A;
+    border-right: 3px solid #02C39A;
+}
+
+.InsideRightTop {
+    border-top-left-radius: 9px;
+    border-top: 3px solid #02C39A;
+    border-left: 3px solid #02C39A;
+}
+
+.InsideRightBottom {
+    border-bottom-left-radius: 9px;
+    border-bottom: 3px solid #02C39A;
+    border-left: 3px solid #02C39A;
+}
+
+.Final2 {
+    border-bottom: 3px solid #02C39A;
+}
+
+/* END OF BRACKET LINE BUILDING: */
+
+.ButtonSquare {
+    /* background-color: yellow; */
 }
 
 .ChampButtons {
-    background-color: pink;
-} */
+    /* background-color: pink; */
+}
 
-
-.InsideLeft .ButtonDiv{
-    /* border: 1px solid green; */
+.InsideLeft .ButtonDiv, .InsideLeftTop .ButtonDiv {
     display: flex;
     width: 97%;
     flex-direction: row;
     justify-content: flex-end;
 }
-.InsideRight .ButtonDiv {
+
+.InsideRight .ButtonDiv, .InsideRightTop .ButtonDiv {
     display: flex;
     width: 97%;
     flex-direction: row;
@@ -82,14 +102,32 @@
 }
 
 .ButtonDiv div {
-    /* background-color: black; */
-    /* color: orange; */
     border: none;
     cursor: pointer;
-    border: 1px solid blue;
     border-radius: 45px;
-    /* font-size: .8em; */
-    /* font-weight: bolder; */
-    /* height: 20px;
-    width: 20px; */
 }
+
+/* START OF SCROLL BARS: */
+
+.BracketView::-webkit-scrollbar {
+    width: 8px;
+    background-color: #05668D;
+}
+
+.BracketView::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #02C39A;
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent)
+}
+
+.BracketView::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #05668D;
+}
+
+.BracketView::-webkit-scrollbar-corner {
+    background-color: #05668D;
+}
+
+/* END OF SCROLL BARS */

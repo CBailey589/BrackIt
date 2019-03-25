@@ -33,7 +33,6 @@ class Bracket extends Component {
     }
 
     advanceItemToNextRound = (evt) => {
-        debugger
         let newState = {}
         newState.bracketObj = this.state.bracketObj
         let multiplier

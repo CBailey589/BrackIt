@@ -37,25 +37,46 @@ function MakeBracketSquareInfo(col, row, bracketObj) {
 
     // Check to see if boxes should have side borders, and which side they should be on
     if (firstLastCol === true && bottom <= (bracketObj.rows - row) && row > top && Math.floor((row - top) / inOut - 0.5) % 2 === 0 && ((row - top) / inOut) <= numItemsInCol) {
-        if (col < regionBreak) {
+        if (Math.floor((row - top) / inOut) % 2 === 0 && col < regionBreak) {
+            squareInfo.inside = "InsideLeftTop"
+        } else if ((row + 1) % (4) === 0 && col < regionBreak) {
+            squareInfo.inside = "InsideLeftBottom"
+        } else if (Math.floor((row - top) / inOut) % 2 === 0 && col > regionBreak) {
+            squareInfo.inside = "InsideRightTop"
+        } else if ((row + 1) % (4) === 0 && col > regionBreak) {
+            squareInfo.inside = "InsideRightBottom"
+        } else if (col < regionBreak) {
             squareInfo.inside = "InsideLeft"
         } else {
             squareInfo.inside = "InsideRight"
         }
     } else if (firstLastCol === false && bottom <= (bracketObj.rows - row) && row > top && Math.floor((row - top) / (inOut + 0.01)) % 2 === 0) {
-        if (col < regionBreak) {
+        // if (((row + (Math.floor(inOut / 2))) % inOut === 0) && col < regionBreak) {
+        if (((row + ((inOut / 2) - 1)) % inOut === 0) && col < regionBreak) {
+            squareInfo.inside = "InsideLeftTop"
+        } else if (((row + (Math.floor(inOut / 2))) % inOut === 0) && col < regionBreak) {
+            squareInfo.inside = "InsideLeftBottom"
+        } else if (((row + ((inOut / 2) - 1)) % inOut === 0) && col > regionBreak) {
+            squareInfo.inside = "InsideRightTop"
+        } else if (((row + (Math.floor(inOut / 2))) % inOut === 0) && col > regionBreak) {
+            squareInfo.inside = "InsideRightBottom"
+        } else if (col < regionBreak) {
             squareInfo.inside = "InsideLeft"
         } else {
             squareInfo.inside = "InsideRight"
         }
+    } else if (col === regionBreak && row === Math.ceil(bracketObj.rows / 2)) {
+        squareInfo.inside = "Final2"
+    } else if (col === regionBreak + 2 && row === Math.ceil(bracketObj.rows / 2)) {
+        squareInfo.inside = "Final2"
     }
 
     //Check to see if button should be in square
     if (firstLastCol === false && row % inOut === 0 && (row / inOut) % 2 !== 0) {
-        squareInfo.button = true
-    } else if (firstLastCol === true && row % inOut === 0 && (row / inOut) % 2 !== 0 && ((row - top) / inOut) <= numItemsInCol) {
-        squareInfo.button = true
-    }
+            squareInfo.button = true
+        } else if (firstLastCol === true && row % inOut === 0 && (row / inOut) % 2 !== 0 && ((row - top) / inOut) <= numItemsInCol) {
+            squareInfo.button = true
+        }
 
     // Check to see if championship buttons should be in square
     if (col === regionBreak + 1 && row === Math.ceil(bracketObj.rows / 2) + 1) {
