@@ -80,7 +80,7 @@
 /* END OF BRACKET LINE BUILDING: */
 
 .ChampButtons .ButtonDiv {
-    background-color: pink;
+    border: 1px solid orange;
 }
 
 .InsideLeft .ButtonDiv, .InsideLeftTop .ButtonDiv {
