@@ -41,7 +41,7 @@ class Bracket extends Component {
         let col
 
         if (evt.target.id.includes("L") === false && evt.target.id.includes("R") === false) {
-            let id = evt.target.id.split("-")
+            let id = evt.target.id.split("--")[0].split("-")
             round = parseInt(id[0])
             row = parseInt(id[1])
             col = parseInt(id[2])
@@ -82,22 +82,22 @@ class Bracket extends Component {
         this.setState(newState)
     }
 
-    pickChamp = (num, evt) => {
+    pickChamp = (evt) => {
         let newState = {}
         newState.bracketObj = this.state.bracketObj
+        let round
+        let row
+        let col
+        let modifier
 
-        let id = evt.target.id.split("-")
-        let col = parseInt(id[2])
-        let row = parseInt(id[1])
+        if (evt.target.id.includes("Champ")) {
+            let id = evt.target.id.split("--")[0].split("-")
+            round = parseInt(id[0])
+            row = parseInt(id[1]) - 1
+            col = parseInt(id[2])
 
-        let modifier = 0
-        if (num === 1) {
-            modifier = -1
-        } else if (num === 2) {
-            modifier = 1
-        } else {
-            let choice1Weight = this.state.bracketObj.AddressesWithItems[document.querySelector(`div[id^="${`${col - 1}${row - 1}`}"]`).id.split("--")[1]].itemWeight || 0
-            let choice2Weight = this.state.bracketObj.AddressesWithItems[document.querySelector(`div[id^="${`${col + 1}${row - 1}`}"]`).id.split("--")[1]].itemWeight || 0
+            let choice1Weight = this.state.bracketObj.AddressesWithItems["L1"].itemWeight || 0
+            let choice2Weight = this.state.bracketObj.AddressesWithItems["R1"].itemWeight || 0
 
             if ((choice1Weight * Math.random()) > (choice2Weight * Math.random())) {
                 modifier = -1
@@ -105,8 +105,15 @@ class Bracket extends Component {
                 modifier = 1
             }
         }
+        else if (evt.target.classList.contains("Final2")) {
+            let id = evt.target.id.split("--")[0].split("-")
+            round = parseInt(id[2])
+            row = parseInt(id[1])
+            col = parseInt(id[0])
+            modifier = 0
+        }
 
-        let idToFind = `${col + modifier}${row - 1}`
+        let idToFind = `${col + modifier}-${row}`
         let squareWithItem = document.querySelector(`div[id^="${idToFind}"]`)
 
         let addressToAdvanceFrom = squareWithItem.id.split("--")[1]

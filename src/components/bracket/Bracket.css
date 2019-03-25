@@ -79,12 +79,8 @@
 
 /* END OF BRACKET LINE BUILDING: */
 
-.ButtonSquare {
-    /* background-color: yellow; */
-}
-
-.ChampButtons {
-    /* background-color: pink; */
+.ChampButtons .ButtonDiv {
+    background-color: pink;
 }
 
 .InsideLeft .ButtonDiv, .InsideLeftTop .ButtonDiv {
