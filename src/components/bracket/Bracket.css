@@ -113,7 +113,7 @@
 .BracketView::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: #02C39A;
-    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent)
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .4) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .4) 50%, rgba(255, 255, 255, .4) 75%, transparent 75%, transparent)
 }
 
 .BracketView::-webkit-scrollbar-track {
@@ -127,3 +127,24 @@
 }
 
 /* END OF SCROLL BARS */
+
+/* START OF MODALS: */
+#ChampModalContent {
+    border: 2px solid blueviolet;
+    background-color: red;
+    z-index: 2;
+    height: 20vh;
+    width: 20vw;
+    position: fixed;
+    right: 35vw;
+    bottom: 40vh;
+}
+#ConfettiModal {
+    z-index: 1;
+    position: fixed;
+    right: 0;
+    bottom: 4vh;
+    width: 88vw;
+    height: 76vh;
+    background-color: rgba(0,0,0,.4)
+}
