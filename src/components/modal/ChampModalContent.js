@@ -5,8 +5,12 @@ class ChampModalContent extends Component {
         return (
             <React.Fragment>
                 <div className="ChampModalContent" id="ChampModalContent">
-                And the champion is...<br />
-                    {this.props.winner}!!!
+                    <div className="ChampModalHeader">
+                        And the champion is...
+                    </div>
+                    <div className="ChampModalWinner">
+                        {this.props.winner}!
+                    </div>
                 </div>
             </React.Fragment >
         )
