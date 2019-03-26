@@ -50,11 +50,9 @@ class BracketSqaure extends Component {
                                     style={{
                                         height: `${(1 * (squareScale + 1)) + (round * 3)}px`,
                                         width: `${(1 * (squareScale + 1)) + (round * 3)}px`,
-
-                                        backgroundColor: `red`
                                     }}
                                 >
-
+                                    ?
                                 </div>
                             </div>
                             : null
@@ -68,13 +66,12 @@ class BracketSqaure extends Component {
                                         this.props.pickChamp(evt)
                                     }}
                                     style={{
+                                        // ********NEEDS TWEAKING ON SIZE*************
                                         height: `${(1 * (squareScale + 1)) + (round * 3)}px`,
                                         width: `${(1 * (squareScale + 1)) + (round * 3)}px`,
-
-                                        backgroundColor: `red`
                                     }}
                                 >
-
+                                    ?
                                 </div>
                             </div>
                             : null

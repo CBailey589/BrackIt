@@ -78,11 +78,6 @@
 }
 
 /* END OF BRACKET LINE BUILDING: */
-
-.ChampButtons .ButtonDiv {
-    border: 1px solid orange;
-}
-
 .InsideLeft .ButtonDiv, .InsideLeftTop .ButtonDiv {
     display: flex;
     width: 97%;
@@ -98,9 +93,13 @@
 }
 
 .ButtonDiv div {
-    border: none;
+    border: 1px solid #F0F3BD;
     cursor: pointer;
     border-radius: 45px;
+    font-family: 'Baloo Bhaijaan', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* START OF SCROLL BARS: */
