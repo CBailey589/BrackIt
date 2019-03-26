@@ -143,7 +143,6 @@ class Bracket extends Component {
             champModalContent: newState.champModalContent,
             confettiModal: newState.confettiModal
         }, () => {
-            // this.rainConfetti()
         })
     }
 

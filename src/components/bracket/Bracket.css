@@ -139,7 +139,7 @@
     position: fixed;
     right: 35vw;
     bottom: 40vh;
-    animation: pulse 3s infinite
+    /* animation: pulse 3s infinite */
 }
 
 #ConfettiModal {
@@ -152,54 +152,44 @@
     background-color: rgba(0, 0, 0, .4)
 }
 
-[class|="confetti"] {
+.confetti{
     position: absolute;
 }
 
-.red {
-    background-color: #E94A3F;
-    height: 3px;
-    width: 3px;
-    z-index: 1;
+.defaultColor {
+    background-color: #0BE500;
 }
 
-.yellow {
-    background-color: #FAA040;
-    height: 3px;
-    width: 3px;
-    z-index: 1;
+.altColor1 {
+    background-color: #00DDE5;
 }
 
-.blue {
-    background-color: #5FC9F5;
-    height: 3px;
-    width: 3px;
-    z-index: 1;
+.altColor2 {
+    background-color: #E500A8;
+}
+
+:root {
+    --RL-movement: 0px
 }
 
 @keyframes fallingConfetti {
     0% {
-        /* opacity: 0.1; */
-        -webkit-transform: translate(0, 0px) rotateZ(0deg);
+        -webkit-transform: translate(0px, 0px) rotateZ(0deg);
     }
-    10% {
+    1% {
         opacity: 1;
-    }
-    75% {
-        opacity: 1;
-        -webkit-transform: translate(100px, 600px) rotateZ(270deg);
     }
     100% {
         opacity: 1;
-        -webkit-transform: translate(150px, 800px) rotateZ(360deg);
+        -webkit-transform: translate(var(--RL-movement), 600px) rotateZ(360deg);
     }
 }
 
 @keyframes pulse {
     0% {
         background-color: #001F3F;
-      }
-      100% {
+    }
+    100% {
         background-color: #FF4136;
-      }
+    }
 }
