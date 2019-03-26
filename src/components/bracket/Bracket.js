@@ -139,7 +139,12 @@ class Bracket extends Component {
 
         newState.champModalContent = champModalContent
         newState.confettiModal = confettiModal
-        this.setState(newState)
+        this.setState({
+            champModalContent: newState.champModalContent,
+            confettiModal: newState.confettiModal
+        }, () => {
+            // this.rainConfetti()
+        })
     }
 
     componentDidMount() {
