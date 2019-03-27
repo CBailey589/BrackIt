@@ -8,11 +8,11 @@ class EditListModal extends Component {
     }
 
     handleFieldChange = evt => {
-        if (evt.target.id === "itemText" && evt.target.value.length <= 20) {
+        if (evt.target.id === "itemText" && evt.target.value.length <= 22) {
             const newState = this.state
             newState[evt.target.id] = evt.target.value
             this.setState(newState)
-        } else if (evt.target.id === "itemText" && evt.target.value.length > 20) {
+        } else if (evt.target.id === "itemText" && evt.target.value.length > 22) {
             alert("Item entries must be 20 characters or less")
             document.querySelector("#itemText").value = this.state.itemText
         }else if (evt.target.id !== "itemText") {
@@ -87,7 +87,7 @@ class EditListModal extends Component {
                         onChange={this.handleFieldChange}
                     />
                     <div>
-                        {20 - this.state.itemText.length}/20 characters remaining
+                        {22 - this.state.itemText.length}/22 characters remaining
                     </div>
                     <button
                         onClick={() => {

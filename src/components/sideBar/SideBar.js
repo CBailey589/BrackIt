@@ -6,11 +6,11 @@ import "./SideBar.css"
 class SideBar extends Component {
     render() {
         return (
-            <div className="SideBar">
-                    <div className="SideBarItem">
-                        <Link className="nav-link" to="/">My Lists</Link>
-                    </div>
-            </div >
+            <section className="SideBar">
+                <Link className="NavLink" to="/">
+                    <button className="SideBarLink">My Lists</button>
+                </Link>
+            </section>
         )
     }
 }
