@@ -6,7 +6,7 @@ import ConvertColumnToRound from "../../modules/bracket/ConvertColumnToRound"
 class BracketSqaure extends Component {
     render() {
         const bracketObj = this.props.bracketObj
-        // const rounds = bracketObj.rounds
+        const rounds = bracketObj.rounds
         const numRows = bracketObj.rows
         const numCols = bracketObj.columns
         const squareScale = this.props.squareScale
@@ -25,9 +25,8 @@ class BracketSqaure extends Component {
                     style={{
                         height: `${vh / numRows * squareScale}px`,
                         width: `${vw / numCols * squareScale}px`,
-                        // ************************NEEDS TWEAKING***************************
-                        // fontSize: `${18 / rounds + (squareScale * 4.5) + (round * 2)}px`
-                        fontSize: `${3 + (squareScale ** 2) + (round * 2)}px`
+                        // ********NEEDS TWEAKING ON SIZE?*************
+                        fontSize: `${(4 + (((7 - rounds) * 2) + (round * 1.5))) * squareScale}px`
                     }}
                     onClick={(evt) => {
                         try { this.props.advanceItemToNextRound(evt) }
@@ -48,8 +47,10 @@ class BracketSqaure extends Component {
                                         this.props.advanceItemToNextRound(evt)
                                     }}
                                     style={{
-                                        height: `${(1 * (squareScale + 1)) + (round * 3)}px`,
-                                        width: `${(1 * (squareScale + 1)) + (round * 3)}px`,
+                                        // ********NEEDS TWEAKING ON SIZE?*************
+                                        height: `${squareScale * 2.5 * ((2 * round)) * (7 - rounds)}px`,
+                                        width: `${squareScale * 2.5 * ((2 * round)) * (7 - rounds)}px`,
+                                        fontSize: `${squareScale * 2 * ((2 * round)) * (7 - rounds)}px`
                                     }}
                                 >
                                     ?
@@ -66,9 +67,10 @@ class BracketSqaure extends Component {
                                         this.props.pickChamp(evt)
                                     }}
                                     style={{
-                                        // ********NEEDS TWEAKING ON SIZE*************
-                                        height: `${(1 * (squareScale + 1)) + (round * 3)}px`,
-                                        width: `${(1 * (squareScale + 1)) + (round * 3)}px`,
+                                        // ********NEEDS TWEAKING ON SIZE?*************
+                                        height: `${squareScale * 2.5 * ((2 * round)) * (7 - rounds)}px`,
+                                        width: `${squareScale * 2.5 * ((2 * round)) * (7 - rounds)}px`,
+                                        fontSize: `${squareScale * 2 * ((2 * round)) * (7 - rounds)}px`
                                     }}
                                 >
                                     ?
