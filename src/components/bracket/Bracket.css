@@ -77,6 +77,7 @@
 }
 
 /* END OF BRACKET LINE BUILDING: */
+
 .InsideLeft .ButtonDiv, .InsideLeftTop .ButtonDiv {
     display: flex;
     width: 97%;
@@ -91,7 +92,13 @@
     justify-content: flex-start;
 }
 
-.ButtonDiv div {
+.ChampButtons .ButtonDiv{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.BracketButton {
     border: 1px solid #F0F3BD;
     cursor: pointer;
     border-radius: 45px;
@@ -101,12 +108,11 @@
     align-items: center;
 }
 
-.ChampButtons {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+.BracketButton:hover {
+    border: 2px solid #F0F3BD;
+    background-color: #F0F3BD;
+    color: #05668D;
 }
-
 /* START OF SCROLL BARS: */
 
 .BracketView::-webkit-scrollbar {
@@ -129,9 +135,11 @@
 .BracketView::-webkit-scrollbar-corner {
     background-color: #05668D;
 }
+
 /* END OF SCROLL BARS */
 
 /* START OF CHAMP MODAL AND CONFETTI: */
+
 #ChampModalContent {
     /* border: 2px solid blueviolet; */
     background-color: #028090;
@@ -183,7 +191,7 @@
     background-color: rgba(0, 0, 0, .4)
 }
 
-.confetti{
+.confetti {
     position: absolute;
 }
 
@@ -218,15 +226,15 @@
 
 @keyframes stretch {
     0% {
-      transform: scale(.1);
-      background-color: #02C39A;
-      border-radius: 100%;
+        transform: scale(.1);
+        background-color: #02C39A;
+        border-radius: 100%;
     }
     50% {
-      background-color: #00A896;
+        background-color: #00A896;
     }
     100% {
-      transform: scale(1);
-      background-color: #028090;
+        transform: scale(1);
+        background-color: #028090;
     }
-  }
+}

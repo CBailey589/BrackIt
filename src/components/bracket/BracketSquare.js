@@ -42,6 +42,7 @@ class BracketSqaure extends Component {
                         (classList.includes("ButtonSquare"))
                             ? <div className="ButtonDiv">
                                 <div key={`${round}-${row}-${col}`}
+                                    className="BracketButton"
                                     id={`${round}-${row}-${col}`}
                                     onClick={(evt) => {
                                         this.props.advanceItemToNextRound(evt)
@@ -50,7 +51,7 @@ class BracketSqaure extends Component {
                                         // ********NEEDS TWEAKING ON SIZE?*************
                                         height: `${squareScale * 2.5 * ((2 * round)) * (7 - rounds)}px`,
                                         width: `${squareScale * 2.5 * ((2 * round)) * (7 - rounds)}px`,
-                                        fontSize: `${squareScale * 2 * ((2 * round)) * (7 - rounds)}px`
+                                        fontSize: `${squareScale * 2 * ((2 * round)) * (7 - rounds)}px`,
                                     }}
                                 >
                                     ?
@@ -62,6 +63,7 @@ class BracketSqaure extends Component {
                         (classList.includes("ChampButtons"))
                             ? <div className="ButtonDiv">
                                 <div key={`${row}-${col}`}
+                                className="BracketButton"
                                     id={`${round}-${row}-${col}--Champ`}
                                     onClick={(evt) => {
                                         this.props.pickChamp(evt)
