@@ -5,6 +5,7 @@
     flex-direction: row;
     height: 20vh;
     box-sizing: border-box;
+    z-index: 2;
     /* position: fixed;
     top: 0; */
 }

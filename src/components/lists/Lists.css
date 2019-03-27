@@ -282,7 +282,7 @@ justify-content: space-between;
 
 
 
-.Modal {
+#Modal {
     /* border: 2px solid blueviolet */
     background-color: red;
     z-index: 1;

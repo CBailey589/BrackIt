@@ -42,13 +42,7 @@ class NewListModal extends Component {
                 </div>
             </React.Fragment >
         )
-
-
-
-
-
     }
-
 }
 
 

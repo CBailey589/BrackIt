@@ -7,6 +7,9 @@ import SplitItemsToRegions from '../../modules/bracket/SplitItemsToRegions'
 import SendItemsToAddresses from "../../modules/bracket/SendItemsToAddresses"
 import MakeRangeArrays from "../../modules/bracket/MakeRangeArrays"
 
+import ChampModalContent from "../modal/ChampModalContent"
+import ConfettiModal from "../modal/ConfettiModal"
+
 import BracketSquare from "./BracketSquare"
 import "./Bracket.css"
 
@@ -29,7 +32,9 @@ class Bracket extends Component {
         scrollTop: 0,
         squareScale: 1,
         vw: 0,
-        vh: 0
+        vh: 0,
+        champModalContent: [],
+        confettiModal: []
     }
 
     advanceItemToNextRound = (evt) => {
@@ -121,6 +126,24 @@ class Bracket extends Component {
         newState.bracketObj.AddressesWithItems["winner"] = this.state.bracketObj.AddressesWithItems[addressToAdvanceFrom]
 
         this.setState(newState)
+        this.showChamp()
+    }
+
+    showChamp = () => {
+        const newState = {}
+
+        let champModalContent = <ChampModalContent
+            winner={this.state.bracketObj.AddressesWithItems["winner"].itemText} />
+
+        let confettiModal = <ConfettiModal />
+
+        newState.champModalContent = champModalContent
+        newState.confettiModal = confettiModal
+        this.setState({
+            champModalContent: newState.champModalContent,
+            confettiModal: newState.confettiModal
+        }, () => {
+        })
     }
 
     componentDidMount() {
@@ -223,6 +246,14 @@ class Bracket extends Component {
                                 ))
                         }
                     </section>
+                    <div className="ChampModalSection" id="ChampModalSection">
+                        <div>
+                            {this.state.confettiModal}
+                        </div>
+                        <div>
+                            {this.state.champModalContent}
+                        </div>
+                    </div>
                 </section>
             </React.Fragment>
         )
