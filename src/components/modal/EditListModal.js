@@ -37,7 +37,7 @@ class EditListModal extends Component {
             <React.Fragment>
                 <div className="BehindModalCover"></div>
                 <div className="EditListForm">
-                    <div className="">
+                    <div className="EditListName">
                         <label htmlFor="listName">List name:</label>
                         <input
                             type="text"
@@ -48,7 +48,7 @@ class EditListModal extends Component {
                             onChange={this.handleFieldChange}
                         />
                     </div>
-                    <div className="">
+                    <div className="EditListCat">
                         <label htmlFor="listCategory">List Category:</label>
                         <input
                             type="text"
@@ -78,8 +78,8 @@ class EditListModal extends Component {
                             )
                         }
                     </div>
-                    <div className="">
-                        <label htmlFor="itemText">Item Name:</label>
+                    <div className="NewItem">
+                        <label htmlFor="itemText">Item Name: </label>
                         <input
                             type="text"
                             required
@@ -88,9 +88,6 @@ class EditListModal extends Component {
                             placeholder="enter item here"
                             onChange={this.handleFieldChange}
                         />
-                        <div>
-                            {22 - this.state.itemText.length}/22 characters remaining
-                    </div>
                         <button
                             onClick={() => {
                                 let itemObj = {
@@ -101,12 +98,16 @@ class EditListModal extends Component {
                                     userId: listObj.userId
                                 }
                                 this.props.addNewListItem(itemObj)
+                                this.setState({ itemText: "" })
                                 document.querySelector("#itemText").value = ""
                             }}>
                             Add
-                    </button>
+                        </button>
+                        <div className="CharRemaining">
+                            {22 - this.state.itemText.length}/22 characters remaining
+                        </div>
                     </div>
-                    <button
+                    <button className="SaveEditsButton"
                         id={`update--${listObj.id}`}
                         onClick={() => {
                             const updatedListObj = {

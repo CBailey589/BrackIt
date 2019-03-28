@@ -6,8 +6,8 @@ class NewListModal extends Component {
             <React.Fragment>
                 <div className="BehindModalCover"></div>
                 <div className="NewListForm">
-                    <div className="">
-                        <label htmlFor="listName">List name</label>
+                    <div className="NewListName">
+                        <label htmlFor="listName">List name: </label>
                         <input
                             type="text"
                             required
@@ -17,8 +17,8 @@ class NewListModal extends Component {
                             placeholder="List name"
                         />
                     </div>
-                    <div className="">
-                        <label htmlFor="listCategory">List category</label>
+                    <div className="NewListCat">
+                        <label htmlFor="listCategory">List category: </label>
                         <input
                             type="text"
                             required
@@ -28,17 +28,19 @@ class NewListModal extends Component {
                             placeholder="List category"
                         />
                     </div>
-                    <button
-                        onClick={() => {
-                            this.props.clearModal()
-                            this.props.postNewList()
-                        }}>
-                        click it
-                    </button>
-                    <button
-                        onClick={() => this.props.clearModal()}>
-                        Cancel
-                    </button>
+                    <div className="NewListButtons">
+                        <button
+                            onClick={() => {
+                                this.props.clearModal()
+                                this.props.postNewList()
+                            }}>
+                            Create
+                        </button>
+                        <button
+                            onClick={() => this.props.clearModal()}>
+                            Cancel
+                        </button>
+                    </div>
 
                 </div>
             </React.Fragment >
