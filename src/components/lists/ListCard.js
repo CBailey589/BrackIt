@@ -59,15 +59,15 @@ class ListCard extends Component {
                         }
                     </div>
                     <div className="ListFooter">
-                        <div className="PrivacySetting">
+                        {/* <div className="PrivacySetting">
                             This list is {privacySetting}
-                        </div>
+                        </div> */}
                         <button className="ListDeleteButton"
                             id={`delete--${list.id}`}
                             onClick={() => this.props.displayDeleteConfirmModal(list)}>
                             Delete
                         </button>
-                        <div className="PrivacyCheckboxContainer">
+                        {/* <div className="PrivacyCheckboxContainer">
                             <div className="PrivacyCheckboxLabel">
                                 Make list public
                             </div>
@@ -81,7 +81,7 @@ class ListCard extends Component {
                                     readOnly />
                                 <div></div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </section>
             </React.Fragment>
