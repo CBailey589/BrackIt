@@ -4,6 +4,7 @@ class NewListModal extends Component {
     render() {
         return (
             <React.Fragment>
+                <div className="BehindModalCover"></div>
                 <div className="NewListForm">
                     <div className="">
                         <label htmlFor="listName">List name</label>

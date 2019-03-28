@@ -15,7 +15,7 @@ class EditListModal extends Component {
         } else if (evt.target.id === "itemText" && evt.target.value.length > 22) {
             alert("Item entries must be 20 characters or less")
             document.querySelector("#itemText").value = this.state.itemText
-        }else if (evt.target.id !== "itemText") {
+        } else if (evt.target.id !== "itemText") {
             const newState = this.state
             newState[evt.target.id] = evt.target.value
             this.setState(newState)
@@ -23,7 +23,7 @@ class EditListModal extends Component {
     }
 
     componentDidMount() {
-        const newState= this.state
+        const newState = this.state
         newState.listName = this.props.listObj.listName
         newState.listCategory = this.props.listObj.listCategory
         this.setState(newState)
@@ -35,92 +35,95 @@ class EditListModal extends Component {
 
         return (
             <React.Fragment>
-                <div className="">
-                    <label htmlFor="listName">List name:</label>
-                    <input
-                        type="text"
-                        required
-                        className="form-control"
-                        id="listName"
-                        value={`${this.state.listName}`}
-                        onChange={this.handleFieldChange}
-                    />
-                </div>
-                <div className="">
-                    <label htmlFor="listCategory">List Category:</label>
-                    <input
-                        type="text"
-                        required
-                        className="form-control"
-                        id="listCategory"
-                        value={`${this.state.listCategory}`}
-                        onChange={this.handleFieldChange}
-                    />
-                </div>
-                <div className="ListItems">
-                    {
-                        listItems.map((item, index) =>
-                            <section key={`itemSection--${index + 1}`}
-                                className="ItemSection">
-                                <div key={`item--${index + 1}`}>
-                                    {item.itemText}
-                                </div>
-                                <button
-                                    id={`remove--${item.id}`}
-                                    onClick={() => {
-                                        this.props.removeListItem(item)
-                                    }}>
-                                    remove
+                <div className="BehindModalCover"></div>
+                <div className="EditListForm">
+                    <div className="">
+                        <label htmlFor="listName">List name:</label>
+                        <input
+                            type="text"
+                            required
+                            className="form-control"
+                            id="listName"
+                            value={`${this.state.listName}`}
+                            onChange={this.handleFieldChange}
+                        />
+                    </div>
+                    <div className="">
+                        <label htmlFor="listCategory">List Category:</label>
+                        <input
+                            type="text"
+                            required
+                            className="form-control"
+                            id="listCategory"
+                            value={`${this.state.listCategory}`}
+                            onChange={this.handleFieldChange}
+                        />
+                    </div>
+                    <div className="ListItems">
+                        {
+                            listItems.map((item, index) =>
+                                <section key={`itemSection--${index + 1}`}
+                                    className="ItemSection">
+                                    <div key={`item--${index + 1}`}>
+                                        {item.itemText}
+                                    </div>
+                                    <button
+                                        id={`remove--${item.id}`}
+                                        onClick={() => {
+                                            this.props.removeListItem(item)
+                                        }}>
+                                        remove
                                 </button>
-                            </section>
-                        )
-                    }
-                </div>
-                <div className="">
-                    <label htmlFor="itemText">Item Name:</label>
-                    <input
-                        type="text"
-                        required
-                        className="form-control"
-                        id="itemText"
-                        placeholder="enter item here"
-                        onChange={this.handleFieldChange}
-                    />
-                    <div>
-                        {22 - this.state.itemText.length}/22 characters remaining
+                                </section>
+                            )
+                        }
+                    </div>
+                    <div className="">
+                        <label htmlFor="itemText">Item Name:</label>
+                        <input
+                            type="text"
+                            required
+                            className="form-control"
+                            id="itemText"
+                            placeholder="enter item here"
+                            onChange={this.handleFieldChange}
+                        />
+                        <div>
+                            {22 - this.state.itemText.length}/22 characters remaining
+                    </div>
+                        <button
+                            onClick={() => {
+                                let itemObj = {
+                                    itemText: this.state.itemText,
+                                    listId: listObj.id,
+                                    itemActive: true,
+                                    itemWeight: 0.5,
+                                    userId: listObj.userId
+                                }
+                                this.props.addNewListItem(itemObj)
+                                document.querySelector("#itemText").value = ""
+                            }}>
+                            Add
+                    </button>
                     </div>
                     <button
+                        id={`update--${listObj.id}`}
                         onClick={() => {
-                            let itemObj = {
-                                itemText: this.state.itemText,
-                                listId: listObj.id,
-                                itemActive: true,
-                                itemWeight: 0.5,
-                                userId: listObj.userId
+                            const updatedListObj = {
+                                id: listObj.id,
+                                userId: parseInt(sessionStorage.getItem("BrackItId")),
+                                listName: this.state.listName,
+                                listCategory: this.state.listCategory,
+                                listCreatedDateTime: listObj.listCreatedDateTime,
+                                listLastUsed: Date.now(),
+                                public: listObj.public,
                             }
-                            this.props.addNewListItem(itemObj)
-                            document.querySelector("#itemText").value = ""
+                            this.props.updateList(updatedListObj)
+                            this.props.clearModal()
                         }}>
-                        Add
+                        Save Edits
                     </button>
                 </div>
-                <button
-                    id={`update--${listObj.id}`}
-                    onClick={() => {
-                        const updatedListObj = {
-                            id: listObj.id,
-                            userId: parseInt(sessionStorage.getItem("BrackItId")),
-                            listName: this.state.listName,
-                            listCategory: this.state.listCategory,
-                            listCreatedDateTime: listObj.listCreatedDateTime,
-                            listLastUsed: Date.now(),
-                            public: listObj.public,
-                        }
-                        this.props.updateList(updatedListObj)
-                        this.props.clearModal()
-                    }}>
-                    Save Edits
-                </button>
             </React.Fragment >
         )
     }

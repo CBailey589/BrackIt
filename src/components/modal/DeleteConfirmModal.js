@@ -5,20 +5,23 @@ class DeleteConfirmModal extends Component {
         let id = this.props.listObj.id
         return (
             <React.Fragment>
-                <div>
-                    are you sure you want to delete the list named {this.props.listObj.listName}?
+                <div className="BehindModalCover"></div>
+                <div className="DeleteConfirmForm">
+                    <div>
+                        are you sure you want to delete the list named {this.props.listObj.listName}?
+                    </div>
+                    <button
+                        onClick={() => {
+                            this.props.clearModal()
+                            this.props.deleteList(id)
+                        }}>
+                        Delete
+                    </button>
+                    <button
+                        onClick={() => this.props.clearModal()}>
+                        Cancel
+                    </button>
                 </div>
-                <button
-                    onClick={() => {
-                        this.props.clearModal()
-                        this.props.deleteList(id)
-                    }}>
-                    Delete
-                </button>
-                <button
-                    onClick={() => this.props.clearModal()}>
-                    Cancel
-                </button>
             </React.Fragment >
         )
     }
