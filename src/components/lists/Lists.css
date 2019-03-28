@@ -91,7 +91,7 @@
     width: 40%;
     min-width: 450px;
     height: 35%;
-    min-height: 400px;
+    min-height: 350px;
     position: relative;
 }
 
@@ -127,10 +127,11 @@
     background-color: #05668D;
     border: 10px solid 05668D;
     border-radius: 20px;
-    padding: 20px;
+    padding: 10px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     height: 100%;
     width: 100%;
     box-sizing: border-box;
@@ -139,7 +140,6 @@
 }
 
 .ListHeader {
-    border: 1px solid goldenrod;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -185,7 +185,7 @@
     border-radius: 3px;
     display: flex;
     flex-direction: column;
-    height: 45%;
+    height: 50%;
     width: 75%;
     overflow-y: scroll;
     /* margin-bottom: 10px; */
@@ -286,23 +286,30 @@
 /* End of List Items Scrollbars and Checkboxes  */
 
 .CardButtons {
-    border: 2px solid purple;
-    width: 270px;
-    height: 30px;
     display: flex;
+    width: 75%;
+    height: 15%;
     justify-content: flex-end;
-    /* margin-bottom: 50px; */
+    align-items: center;
 }
 
 .CardButtons button {
     font-size: 20px;
+    font-weight: bolder;
     width: 100px;
     height: 30px;
-    /* margin-left: 10px; */
-    border-radius: 10px 20px;
-    background-color: #0021A5;
-    color: #FF9D00;
-    border: 1px solid #FF9D00;
+    margin-left: 10px;
+    border-radius: 10px;
+    background-color: #05668D;
+    color: #F0F3BD;
+    border: 2px solid #F0F3BD;
+    box-shadow: 3px 3px 5px 3px rgba(0, 0, 0, .4);
+    cursor: pointer;
+}
+
+.CardButtons button:hover {
+    background-color: #F0F3BD;
+    color: #05668D;
 }
 
 .BrackitWarning {
@@ -312,10 +319,9 @@
 }
 
 .ListFooter {
-    border: 1px solid pink;
+    /* border: 1px solid pink; */
     display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
+    width: 90%;
 }
 
 .PrivacySetting {
@@ -327,13 +333,14 @@
 }
 
 .ListDeleteButton {
-    width: 30%;
-    border-radius: 10px 20px;
-    background-color: #FF9D00;
-    border: 1px solid #FF9D00;
+    width: 15%;
+    border-radius: 7px;
+    background-color: #05668D;
+    border: 1px solid #F0F3BD;
     font-size: 14px;
-    color: #0021A5;
+    color: #F0F3BD;
     font-weight: bolder;
+    box-shadow: 3px 3px 5px 3px rgba(0, 0, 0, .4)
 }
 
 .PrivacyCheckboxContainer {
