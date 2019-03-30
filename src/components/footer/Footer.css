@@ -11,5 +11,12 @@
     justify-content: center;
     align-items: center;
     font-size: .6em;
-
+    font-family: 'Kanit', sans-serif;
+    box-sizing: border-box;
+    background-image: url('../../images/BrackItFooter.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: -2px;
+    background-position-y: 0px;
+    display: flex;
 }

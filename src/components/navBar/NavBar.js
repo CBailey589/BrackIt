@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { Link } from "react-router-dom"
 import "./NavBar.css"
 
 class NavBar extends Component {
@@ -6,16 +7,20 @@ class NavBar extends Component {
         return (
             <div className="NavBar">
                 <div className="NavBarLogo">
-                    logo
                 </div>
                 <div className="HeaderWelcome">
                     Welcome {this.props.activeUser.firstName}
                 </div>
-                <ul className="">
-                    {/* <li className="NavItem">
-                        <Link className="nav-link" to="/">My Lists</Link>
-                    </li> */}
-                </ul>
+                <div className="NavBarLinks">
+                    <Link to="/">
+                        <button
+                            onClick={(evt) => {
+                                sessionStorage.removeItem("BrackItId")
+                            }}>
+                            Logout
+                        </button>
+                    </Link>
+                </div>
             </div>
         )
     }
