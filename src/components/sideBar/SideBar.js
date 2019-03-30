@@ -8,7 +8,9 @@ class SideBar extends Component {
         return (
             <section className="SideBar">
                 <Link className="NavLink" to="/">
-                    <button className="SideBarLink">My Lists</button>
+                    <button className="SideBarLink"
+
+                    >My Lists</button>
                 </Link>
             </section>
         )
